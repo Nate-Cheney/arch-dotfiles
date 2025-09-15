@@ -1,0 +1,58 @@
+{
+    // Waybar configuration
+    "layer": "top",
+    "position": "top",
+    "height": 45,
+    "spacing": 4,
+    
+    // Module layout
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "wireplumber",  "network", "custom/power"],
+
+    // Left modules
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate",
+	"all-outputs": true,
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+
+    // Center modules
+    "clock": {
+    	"format": "{:%a %d, %I:%M %p}",
+	"tooltip": false
+    },
+
+    // Right modules
+    "cpu": {
+        "format": "cpu {usage}%",
+        "tooltip": true,
+        "interval": 1
+    },
+
+    "memory": {
+        "format": "mem {}%"
+    },
+
+    "wireplumber": {
+        "format": " vol {volume}%",
+        "format-muted": " deafened",
+        "on-click": "pwvucontrol",
+        "tooltip": false
+    },
+
+    "network": {
+	"format": "{ipaddr}/{cidr}",
+        "format-disconnected": "Disconnected ⚠"
+        //"on-click-right": "nm-connection-editor"
+    },
+    "custom/power": {
+    	"format": "",
+	"on-click": "wlogout"
+    }
+
+}
