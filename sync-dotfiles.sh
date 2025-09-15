@@ -50,7 +50,7 @@ download() {
 
 		# Wofi
 		cp -ruv ./.config/wofi ~/.config/
-	} | wc -l )
+	} | tee /dev/tty | wc -l )
 	echo "Download complete. Total files copied: $copied_files"
 }
 
@@ -74,7 +74,7 @@ upload() {
 
 		# Wofi
 		cp -ruv ~/.config/wofi ./.config/
-	} | wc -l)
+	} | tee /dev/tty | wc -l)
 	echo "Download complete. Total files copied: $copied_files"
 }
 
