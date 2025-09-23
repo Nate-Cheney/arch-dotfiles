@@ -21,10 +21,10 @@ Options:
 
 Examples:
 	# Update system config files (download to system)
-	./arch-dotfiles.sh -d
+	./sync-dotfiles.sh -d
 
 	# Update repo config files (upload to repo)
-	./arch-dotfiles.sh -u
+	./sync-dotfiles.sh -u
 	
 EOF
 	exit 0
