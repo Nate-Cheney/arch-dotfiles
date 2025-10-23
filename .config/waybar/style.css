@@ -1,115 +1,61 @@
 * {
-    font-family: "mononoki", "CaskaydiaCove Nerd Font", "Font Awesome 6 Free";
-    font-size: 16px;
+    background-color: #1a1b26;
+    color: #cdd6f4;
+
+    border: none;
     border-radius: 0;
     min-height: 0;
-    border: none;
-    font-weight: bold;
+    font-family: "JetBrains Mono Nerd Font"; 
+    font-size: 14px;
 }
 
-window#waybar {
-    background-color: #181825;
-    transition-property: background-color;
-    transition-duration: 0.5s;
+.modules-left {
+  margin-left: 8px;
 }
 
-window#waybar.hidden {
-    opacity: 0.5;
+.modules-right {
+  margin-right: 8px;
 }
 
-tooltip {
-    border-radius: 8px;
-    padding: 16px;
-    background-color: #131822;
-    color: #C0C0C0;
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
 }
 
-tooltip label {
-    padding: 5px;
-    background-color: #131822;
-    color: #C0C0C0;
+#workspaces button.empty {
+  opacity: 0.5;
 }
 
-/* Default module styling */
 #clock,
 #battery,
 #custom-power,
 #cpu,
 #memory,
 #network,
-#wireplumber,
+#wireplumber {
+    min-width: 12px;
+    margin: 0 7.5px;
+}
+
 #tray {
-    border-radius: 4px;
-    margin: 6px 3px;
-    padding: 6px 12px;
-    background-color: #1e1e2e; /* Fallback background */
-    color: #181825; /* Default text color for modules */
-}
-
-/* Specific module colors */
-#clock {
-    background-color: #89b4fa;
-}
-
-#battery {
-    background-color: #cba6f7;
-}
-
-#custom-power {
-    background-color: #cdd6f4;
-}
-#cpu {
-    background-color: #f38ba8;
-}
-
-#memory {
-    background-color: #f7768e;
+  margin-right: 16px;
 }
 
 #network {
-    background-color: #fab387;
+  margin-right: 13px;
 }
 
-#wireplumber {
-    background-color: #89dceb;
+tooltip {
+  padding: 2px;
 }
 
-#tray {
-    background-color: #242434; /* #242434 from rgba(36, 36, 52, 1.0) */
-    border-radius: 6px;
+#clock {
+  margin-left: 8.75px;
 }
 
-#workspaces {
-    background-color: #181825;
-    margin: 0; /* Margin is now on buttons */
+.hidden {
+  opacity: 0;
 }
-
-#workspaces button {
-    all: initial; /* Reset GTK theme values */
-    min-width: 0;
-    box-shadow: inset 0 -3px transparent;
-    padding: 6px 18px;
-    margin: 6px 3px;
-    border-radius: 4px;
-    background-color: #242434; /* #242434 from rgba(36, 36, 52, 1.0) */
-    color: #cdd6f4;
-}
-
-#workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-    color: #1e1e2e;
-    background-color: #cdd6f4;
-}
-
-#workspaces button.active {
-    color: #1e1e2e;
-    background-color: #cdd6f4;
-}
-
-#workspaces button.urgent {
-    background-color: #f38ba8; /* Using the pink/red for urgent */
-    color: #1e1e2e;
-}
-
 
