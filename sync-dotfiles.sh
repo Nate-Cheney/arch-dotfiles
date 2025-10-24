@@ -21,10 +21,10 @@ Options:
 
 Examples:
 	# Update system config files (download to system)
-	./sync-dotfiles.sh -d
+	./arch-dotfiles.sh -d
 
 	# Update repo config files (upload to repo)
-	./sync-dotfiles.sh -u
+	./arch-dotfiles.sh -u
 	
 EOF
 	exit 0
@@ -34,22 +34,22 @@ download() {
 	local copied_files
 	copied_files=$( {
 		# Hyprland
-		cp -ruv ./.config/hypr ~/.config/
+		cp -ruv ./config/hypr ~/.config/
 
 		# Kitty
-		cp -ruv ./.config/kitty ~/.config/
+		cp -ruv ./config/kitty ~/.config/
 
 		# Neovim
-		cp -ruv ./.config/nvim ~/.config/
+		cp -ruv ./config/nvim ~/.config/
 
 		# Waybar
-		cp -ruv ./.config/waybar ~/.config/
+		cp -ruv ./config/waybar ~/.config/
 
 		# WLogout
-		cp -ruv ./.config/wlogout ~/.config/
+		cp -ruv ./config/wlogout ~/.config/
 
 		# Wofi
-		cp -ruv ./.config/wofi ~/.config/
+		cp -ruv ./config/wofi ~/.config/
 	} | tee /dev/tty | wc -l )
 	echo "Download complete. Total files copied: $copied_files"
 }
@@ -58,22 +58,22 @@ upload() {
 	local copied_files
 	copied_files=$( {
 		# Hyprland
-		cp -ruv ~/.config/hypr ./.config/
+		cp -ruv ~/.config/hypr ./config/
 
 		# Kitty
-		cp -ruv ~/.config/kitty ./.config/
+		cp -ruv ~/.config/kitty ./config/
 
 		# Neovim
-		cp -ruv ~/.config/nvim ./.config/
+		cp -ruv ~/.config/nvim ./config/
 
 		# Waybar
-		cp -ruv ~/.config/waybar ./.config/
+		cp -ruv ~/.config/waybar ./config/
 
 		# WLogout
-		cp -ruv ~/.config/wlogout ./.config/
+		cp -ruv ~/.config/wlogout ./config/
 
 		# Wofi
-		cp -ruv ~/.config/wofi ./.config/
+		cp -ruv ~/.config/wofi ./config/
 	} | tee /dev/tty | wc -l)
 	echo "Download complete. Total files copied: $copied_files"
 }
