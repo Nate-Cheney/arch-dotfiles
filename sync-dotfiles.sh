@@ -42,6 +42,9 @@ download() {
 		# Neovim
 		cp -ruv ./config/nvim ~/.config/
 
+        # UWSM
+        cp -ruv ./config/uwsm ~/.config/
+
 		# Waybar
 		cp -ruv ./config/waybar ~/.config/
 
@@ -50,7 +53,7 @@ download() {
 
 		# Wofi
 		cp -ruv ./config/wofi ~/.config/
-	} | tee /dev/tty | wc -l )
+    } | tee /dev/tty | wc -l )
 	echo "Download complete. Total files copied: $copied_files"
 }
 
@@ -65,6 +68,9 @@ upload() {
 
 		# Neovim
 		cp -ruv ~/.config/nvim ./config/
+        
+        # UWSM
+        cp -ruv ~/.config/uwsm ./config/
 
 		# Waybar
 		cp -ruv ~/.config/waybar ./config/
