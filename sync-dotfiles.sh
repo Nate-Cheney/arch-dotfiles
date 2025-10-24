@@ -33,6 +33,9 @@ EOF
 download() {
 	local copied_files
 	copied_files=$( {
+		# Elephant 
+		cp -ruv ./config/elephant ~/.config/
+
 		# Hyprland
 		cp -ruv ./config/hypr ~/.config/
 
@@ -45,7 +48,10 @@ download() {
         # UWSM
         cp -ruv ./config/uwsm ~/.config/
 
-		# Waybar
+		# Walker
+		cp -ruv ./config/walker ~/.config/
+		
+        # Waybar
 		cp -ruv ./config/waybar ~/.config/
 
 		# WLogout
@@ -60,6 +66,9 @@ download() {
 upload() {
 	local copied_files
 	copied_files=$( {
+		# Elephant
+		cp -ruv ~/.config/elephant ./config/
+
 		# Hyprland
 		cp -ruv ~/.config/hypr ./config/
 
@@ -71,6 +80,9 @@ upload() {
         
         # UWSM
         cp -ruv ~/.config/uwsm ./config/
+
+		# Walker
+		cp -ruv ~/.config/walker ./config/
 
 		# Waybar
 		cp -ruv ~/.config/waybar ./config/
