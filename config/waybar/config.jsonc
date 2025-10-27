@@ -38,7 +38,8 @@
     // Center modules
     "clock": {
         "format": "{:L%A %H:%M}",
-	"tooltip": false
+        "tooltip-format": "{:%A, %B %d - %H:%M}"
+	//"tooltip": false
     },
 
     // Right modules
