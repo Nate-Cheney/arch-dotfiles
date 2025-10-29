@@ -13,7 +13,7 @@ It is assumed that:
 
 ## Install
 
-#### Connect to the internet
+#### 1. Connect to the internet
 
 [Reference](https://wiki.archlinux.org/title/Installation_guide#Connect_to_the_internet)
 
