@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # Author: Nate Cheney
 # Filename: sync-dotfiles.sh
 # Description: This script provides two sync methods (upload + download). 
@@ -8,7 +8,7 @@
 # 	-h, --help Display this message and exit
 # 	-d, --download Download config files from this repo to ~/.config
 # 	-u, --upload Upload config files from ~/.config to this repo
-#
+
 
 usage() {
 	cat << EOF
@@ -31,69 +31,23 @@ EOF
 }
 
 download() {
-	local copied_files
-	copied_files=$( {
-		# Elephant 
-		cp -ruv ./config/elephant ~/.config/
-
-		# Hyprland
-		cp -ruv ./config/hypr ~/.config/
-
-		# Kitty
-		cp -ruv ./config/kitty ~/.config/
-
-		# Neovim
-		cp -ruv ./config/nvim ~/.config/
-
-        # UWSM
-        cp -ruv ./config/uwsm ~/.config/
-
-		# Walker
-		cp -ruv ./config/walker ~/.config/
-		
-        # Waybar
-		cp -ruv ./config/waybar ~/.config/
-
-		# WLogout
-		cp -ruv ./config/wlogout ~/.config/
-
-		# Wofi
-		cp -ruv ./config/wofi ~/.config/
-    } | tee /dev/tty | wc -l )
-	echo "Download complete. Total files copied: $copied_files"
+    local copied_files=0
+    for dir in "$@"; do
+        cp -ruv ./$dir ~/.config/$dir
+        ((copied_files++))
+    done
+	
+    echo "Download complete. Total files copied: $copied_files"
 }
 
 upload() {
-	local copied_files
-	copied_files=$( {
-		# Elephant
-		cp -ruv ~/.config/elephant ./config/
+    local copied_files=0
+    for dir in "$@"; do
+        cp -ruv ~/.config/$dir ./$dir
+        ((copied_files++))
+    done
 
-		# Hyprland
-		cp -ruv ~/.config/hypr ./config/
-
-		# Kitty
-		cp -ruv ~/.config/kitty ./config/
-
-		# Neovim
-		cp -ruv ~/.config/nvim ./config/
-        
-        # UWSM
-        cp -ruv ~/.config/uwsm ./config/
-
-		# Walker
-		cp -ruv ~/.config/walker ./config/
-
-		# Waybar
-		cp -ruv ~/.config/waybar ./config/
-
-		# WLogout
-		cp -ruv ~/.config/wlogout ./config/
-
-		# Wofi
-		cp -ruv ~/.config/wofi ./config/
-	} | tee /dev/tty | wc -l)
-	echo "Download complete. Total files copied: $copied_files"
+	echo "Upload complete. Total files copied: $copied_files"
 }
 
 # Ensure an argument was passed
@@ -102,17 +56,20 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 
+# Directories to watch
+directories=("elephant" "hypr" "kitty" "nvim" "uwsm" "walker" "wallpaper" "waybar" "wlogout" "wofi")
+
 # Handle options
 while getopts "hdu" opt; do
 	case $opt in
 		h)
-			usage
+			usage 
 		;;
 		d)
-			download
+			download "${directories[@]}"
 		;;
 		u)
-			upload
+			upload "${directories[@]}"
 		;;
 		\?)
 			echo "Invalid option: $OPTARG" >&2

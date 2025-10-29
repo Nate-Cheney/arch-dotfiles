@@ -1,0 +1,73 @@
+{
+    // Waybar configuration
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "spacing": 2,
+    
+    // Module layout
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "wireplumber", "network", "custom/power"],
+
+    // Left modules
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": []
+        }
+    },
+
+    // Center modules
+    "clock": {
+        "format": "{:L%A %H:%M}",
+        "tooltip-format": "{:%A, %B %d - %H:%M}"
+	//"tooltip": false
+    },
+
+    // Right modules
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true,
+        "interval": 1
+    },
+
+    "memory": {
+        "format": " {}%"
+    },
+
+    "wireplumber": {
+        "format": " {volume}%",
+        "format-muted": " deafened",
+        "on-click": "pwvucontrol",
+        "tooltip": false
+    },
+
+    "network": {
+	"format": "{ipaddr}/{cidr}",
+        "format-disconnected": "Disconnected ⚠"
+        //"on-click-right": "nm-connection-editor"
+    },
+    "custom/power": {
+    	"format": "",
+	"on-click": "wlogout"
+    }
+}
+
