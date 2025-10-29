@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # Author: Nate Cheney
 # Filename: sync-dotfiles.sh
 # Description: This script provides two sync methods (upload + download). 
@@ -8,7 +8,7 @@
 # 	-h, --help Display this message and exit
 # 	-d, --download Download config files from this repo to ~/.config
 # 	-u, --upload Upload config files from ~/.config to this repo
-#
+
 
 usage() {
 	cat << EOF
@@ -31,69 +31,25 @@ EOF
 }
 
 download() {
-	local copied_files
-	copied_files=$( {
-		# Elephant 
-		cp -ruv ./config/elephant ~/.config/
-
-		# Hyprland
-		cp -ruv ./config/hypr ~/.config/
-
-		# Kitty
-		cp -ruv ./config/kitty ~/.config/
-
-		# Neovim
-		cp -ruv ./config/nvim ~/.config/
-
-        # UWSM
-        cp -ruv ./config/uwsm ~/.config/
-
-		# Walker
-		cp -ruv ./config/walker ~/.config/
-		
-        # Waybar
-		cp -ruv ./config/waybar ~/.config/
-
-		# WLogout
-		cp -ruv ./config/wlogout ~/.config/
-
-		# Wofi
-		cp -ruv ./config/wofi ~/.config/
-    } | tee /dev/tty | wc -l )
-	echo "Download complete. Total files copied: $copied_files"
+    for dir in "$@"; do
+        rsync -av --delete \
+            --exclude='*.cache' \
+            --exclude='*.log' \
+            --exclude='__pycache__/' \
+            --exclude='.git/' \
+            "./config/$dir/" "$HOME/.config/$dir/"
+    done
 }
 
 upload() {
-	local copied_files
-	copied_files=$( {
-		# Elephant
-		cp -ruv ~/.config/elephant ./config/
-
-		# Hyprland
-		cp -ruv ~/.config/hypr ./config/
-
-		# Kitty
-		cp -ruv ~/.config/kitty ./config/
-
-		# Neovim
-		cp -ruv ~/.config/nvim ./config/
-        
-        # UWSM
-        cp -ruv ~/.config/uwsm ./config/
-
-		# Walker
-		cp -ruv ~/.config/walker ./config/
-
-		# Waybar
-		cp -ruv ~/.config/waybar ./config/
-
-		# WLogout
-		cp -ruv ~/.config/wlogout ./config/
-
-		# Wofi
-		cp -ruv ~/.config/wofi ./config/
-	} | tee /dev/tty | wc -l)
-	echo "Download complete. Total files copied: $copied_files"
+    for dir in "$@"; do
+        rsync -av --delete \
+            --exclude='*.cache' \
+            --exclude='*.log' \
+            --exclude='__pycache__/' \
+            --exclude='.git/' \
+            "$HOME/.config/$dir/" "./config/$dir/"
+    done
 }
 
 # Ensure an argument was passed
@@ -102,17 +58,20 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 
+# Directories to watch
+directories=("elephant" "hypr" "kitty" "nvim" "uwsm" "walker" "waybar" "wlogout" "wofi")
+
 # Handle options
 while getopts "hdu" opt; do
 	case $opt in
 		h)
-			usage
+			usage 
 		;;
 		d)
-			download
+			download "${directories[@]}"
 		;;
 		u)
-			upload
+			upload "${directories[@]}"
 		;;
 		\?)
 			echo "Invalid option: $OPTARG" >&2
