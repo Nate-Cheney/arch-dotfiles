@@ -16,12 +16,3 @@ DesktopNames=Hyprland
 Type=Application
 ```
 
-#### Configure SDDM greeter
-
-Set `/etc/sddm.conf.d/10-hyperland.conf` to the following.
-
-``` /etc/sddm.conf.d/10-hyperland.conf
-[General]
-DisplayServer=wayland
-```
-
