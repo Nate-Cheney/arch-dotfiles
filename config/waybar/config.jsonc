@@ -46,11 +46,13 @@
     "cpu": {
         "format": "  {usage}%",
         "tooltip": true,
-        "interval": 1
+        "interval": 1,
+        "on-click": "btop"
     },
 
     "memory": {
-        "format": " {}%"
+        "format": " {}%",
+        "on-click": "btop"
     },
 
     "wireplumber": {
