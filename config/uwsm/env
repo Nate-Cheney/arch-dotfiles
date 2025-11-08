@@ -1,0 +1,4 @@
+source ~/.config/uwsm/gtk
+source ~/.config/uwsm/nvidia
+source ~/.config/uwsm/qt
+
