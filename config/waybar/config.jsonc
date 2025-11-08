@@ -47,12 +47,12 @@
         "format": "  {usage}%",
         "tooltip": true,
         "interval": 1,
-        "on-click": "btop"
+        "on-click": "kitty -e btop"
     },
 
     "memory": {
         "format": " {}%",
-        "on-click": "btop"
+        "on-click": "kitty -e btop"
     },
 
     "wireplumber": {
