@@ -1,4 +1,4 @@
-These are the dotfiles for some apps and services on my Arch Linux (btw) system.
+A work in progress repository for my Arch Linux system's dotfiles.
 
 ## Login and Session Management
 
