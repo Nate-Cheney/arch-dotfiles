@@ -6,7 +6,7 @@
     border-radius: 0;
     min-height: 0;
     font-family: "JetBrains Mono Nerd Font"; 
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .modules-left {
@@ -46,10 +46,6 @@
 
 #network {
   margin-right: 13px;
-}
-
-tooltip {
-  padding: 2px;
 }
 
 #clock {

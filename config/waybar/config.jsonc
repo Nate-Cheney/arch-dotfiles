@@ -8,12 +8,13 @@
     // Module layout
     "modules-left": ["custom/arch", "hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "wireplumber", "network", "custom/power"],
+    "modules-right": ["wireplumber", "cpu", "memory", "network" ],
 
     // Left modules
     "custom/arch": {
-        "format": " ",
-        "tooltip": false
+        "format": "󰣇 ",
+        "tooltip": false,
+        "on-click": "$HOME/.config/waybar/power.sh"
     },
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -44,36 +45,51 @@
     "clock": {
         "format": "{:L%A %H:%M}",
         "format-alt": "{:%A, %B %d - %H:%M}",
+        "tooltip": false
     },
 
     // Right modules
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": " deaf",
+        "format-icons": [
+            "", // 0 - 15 %
+            "", // 20 - 45 %
+            "", 
+            "", // 50 - 100 %
+            "",
+            ""
+        ],
+        "on-click": "pwvucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip": true,
+        "tooltip-format": "{node_name}"
+    },
+
     "cpu": {
-        "format": "  {usage}%",
+        "format": " {usage}%",
         "tooltip": true,
         "interval": 1,
         "on-click": "kitty -e btop"
     },
 
     "memory": {
-        "format": " {}%",
+        "format": " {}%",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}G/{total:0.1f}G",
         "on-click": "kitty -e btop"
     },
 
-    "wireplumber": {
-        "format": " {volume}%",
-        "format-muted": " deafened",
-        "on-click": "pwvucontrol",
-        "tooltip": false
-    },
-
     "network": {
-	"format": "{ipaddr}/{cidr}",
-        "format-disconnected": "Disconnected ⚠"
+	    "format": "{ipaddr}/{cidr}",
+        "format-disconnected": " Disconnected",
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "format-wifi": " {ipaddr}/{cidr}",
+        "tooltip": true,
+        "interval": 1,
+        "tooltip-format": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "tooltip-format-wifi": "SSID: {essid} - Frequency: {frequency} - Strength: {signalStrength} -  {bandwidthUpBytes}  {bandwidthDownBytes}"
         //"on-click-right": "nm-connection-editor"
-    },
-    "custom/power": {
-    	"format": "⏻",
-	"on-click": "wlogout"
     }
 }
 
