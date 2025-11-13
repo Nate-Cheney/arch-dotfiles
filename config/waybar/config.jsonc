@@ -6,11 +6,15 @@
     "spacing": 2,
     
     // Module layout
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["custom/arch", "hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["cpu", "memory", "wireplumber", "network", "custom/power"],
 
     // Left modules
+    "custom/arch": {
+        "format": " ",
+        "tooltip": false
+    },
     "hyprland/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
@@ -68,7 +72,7 @@
         //"on-click-right": "nm-connection-editor"
     },
     "custom/power": {
-    	"format": "",
+    	"format": "⏻",
 	"on-click": "wlogout"
     }
 }
