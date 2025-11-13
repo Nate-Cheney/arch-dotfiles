@@ -59,7 +59,7 @@ if [ $# -eq 0 ]; then
 fi
 
 # Directories to watch
-directories=("elephant" "hypr" "kitty" "nvim" "uwsm" "walker" "waybar" "wlogout" "wofi")
+directories=("elephant" "hypr" "kitty" "nvim" "uwsm" "walker" "waybar" )
 
 # Handle options
 while getopts "hdu" opt; do
