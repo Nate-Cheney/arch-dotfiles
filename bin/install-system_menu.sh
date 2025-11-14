@@ -13,6 +13,7 @@ packages=(
     "elephant-clipboard-bin"
     "elephant-desktopapplications-bin"
     "walker-bin"
+    "wl-clipboard"
 )
 
 # Install applications
