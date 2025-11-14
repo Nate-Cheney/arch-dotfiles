@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Author: Nate Cheney
-# Filename: install-fail2ban.sh
-# Description: This script installs, enables, and starts fail2ban. 
-# Usage: sudo ./install-fail2ban.sh
+# Filename: install-nmap.sh
+# Description: This script installs nmap. 
+# Usage: sudo ./install-nmap.sh
 # Options:
 #
 
-package="fail2ban"
+package="nmap"
 
 if [ $EUID -ne 0 ]; then 
     echo "This script must be run as root."
@@ -20,8 +20,3 @@ if ! pacman -Q $package &> /dev/null; then
 else 
     echo "$package is already installed."
 fi
-
-# Enable & start
-systemctl enable fail2ban.service
-systemctl start fail2ban.service
-
