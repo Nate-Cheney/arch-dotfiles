@@ -7,17 +7,17 @@
 # Options:
 #
 
-package="noto-fonts-emoji ttf-jetbrains-mono ttf-jetbrains-mono-nerd"
+package="noto-fonts-emoji ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-liberation"
 
 if ! pacman -Q $package &> /dev/null; then
     echo "Installing $package..."
-    pacman -S --noconfirm --needed $package
+    sudo pacman -S --noconfirm --needed $package
 else 
     echo "$package is already installed."
 fi
 
 
-package="ttf-liberation ttf-ms-fonts"
+package="ttf-ms-win11-auto"
 
 echo "Installing $package"
 yay -S --noconfirm --needed \
