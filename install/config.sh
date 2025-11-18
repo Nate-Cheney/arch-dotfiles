@@ -1,0 +1,6 @@
+DISK="/dev/nvme0n1"
+ROOT_PART="${DISK}p2"
+BOOT_PART="${DISK}p1"
+TIMEZONE="America/Detroit"
+HOSTNAME="nate-"
+USERNAME="nate"
