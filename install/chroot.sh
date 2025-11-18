@@ -31,7 +31,7 @@ echo "Starting configuration"
 
 # Set time zone
 echo "Setting timezone to $TIMEZONE..."
-ln -sf /usr/share/zoneinfo/\$TIMEZONE /etc/localtime
+ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 hwclock --systohc
 
 # Set the locale
@@ -99,10 +99,4 @@ bootctl list
 
 echo "Chroot phase complete. Exiting chroot."
 exit
-
-# Clean up the script
-echo "Unmounting /mnt..."
-umount -R /mnt
-
-echo "Done. You can now type 'reboot' to restart into your new system."
 

@@ -1,6 +1,8 @@
+CPU_UCODE="amd-ucode"  # or "intel-ucode"
 DISK="/dev/nvme0n1"
 ROOT_PART="${DISK}p2"
 BOOT_PART="${DISK}p1"
 TIMEZONE="America/Detroit"
+LOCALE="en_US.UTF-8"
 HOSTNAME="nate-"
 USERNAME="nate"

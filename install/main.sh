@@ -7,6 +7,9 @@
 # Options:
 #
 
+set -e
+set -o pipefail
+
 # -- Environment Variables --
 source install/config.sh
 
@@ -14,6 +17,10 @@ source install/config.sh
 while true; do
     read -s -p "Enter root password:" ROOT_PASS
     echo
+    if [ -z "$ROOT_PASS" ]; then
+        echo "Password cannot be empty. Try again."
+        continue
+    fi
     read -s -p "Confirm root password:" ROOT_PASS_CONFIRM
     echo
     if [ "$ROOT_PASS" == "$ROOT_PASS_CONFIRM" ]; then
@@ -27,6 +34,10 @@ done
 while true; do
     read -s -p "Enter $USERNAME password:" USER_PASS
     echo
+    if [ -z "$USER_PASS" ]; then
+        echo "Password cannot be empty. Try again."
+        continue
+    fi
     read -s -p "Confirm $USERNAME password:" USER_PASS_CONFIRM
     echo
     if [ "$USER_PASS" == "$USER_PASS_CONFIRM" ]; then
@@ -45,12 +56,19 @@ bash install/disk.sh
 
 # -- Install essential packages --
 echo "Installing essential packages with pacstrap..."
-pacstrap /mnt $CPU_UCODE base dhcpd linux linux-firmware git neovim sudo
+pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware git neovim sudo
 
 # -- Generate an fstab file --
 echo "Generating fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # -- Run chroot script --
-arch-chroot /mnt install/chroot.sh "$ROOT_PASS" "$USER_PASS"
+cp -r install /mnt/
+arch-chroot /mnt /install/chroot.sh "$ROOT_PASS" "$USER_PASS"
+
+# -- Clean up the script --
+echo "Unmounting /mnt..."
+umount -R /mnt
+
+echo "Done. You can now type 'reboot' to restart into your new system."
 
