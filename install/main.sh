@@ -15,13 +15,13 @@ source install/config.sh
 
 # -- Get root password --
 while true; do
-    read -s -p "Enter root password:" ROOT_PASS
+    read -s -p "Enter root password: " ROOT_PASS
     echo
     if [ -z "$ROOT_PASS" ]; then
         echo "Password cannot be empty. Try again."
         continue
     fi
-    read -s -p "Confirm root password:" ROOT_PASS_CONFIRM
+    read -s -p "Confirm root password: " ROOT_PASS_CONFIRM
     echo
     if [ "$ROOT_PASS" == "$ROOT_PASS_CONFIRM" ]; then
         break
@@ -32,13 +32,13 @@ done
 
 # -- Get user password --
 while true; do
-    read -s -p "Enter $USERNAME password:" USER_PASS
+    read -s -p "Enter $USERNAME password: " USER_PASS
     echo
     if [ -z "$USER_PASS" ]; then
         echo "Password cannot be empty. Try again."
         continue
     fi
-    read -s -p "Confirm $USERNAME password:" USER_PASS_CONFIRM
+    read -s -p "Confirm $USERNAME password: " USER_PASS_CONFIRM
     echo
     if [ "$USER_PASS" == "$USER_PASS_CONFIRM" ]; then
         break
@@ -62,13 +62,34 @@ pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware git neovim sudo
 echo "Generating fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# -- Run chroot script --
-cp -r install /mnt/
-arch-chroot /mnt /install/chroot.sh "$ROOT_PASS" "$USER_PASS"
+# -- Get the UUID for bootloader config --
+ROOT_PART_UUID=$(blkid -s UUID -o value $ROOT_PART)
 
-# -- Clean up the script --
+# -- Create config file for chroot script --
+cat > /mnt/root/chroot_config.sh << EOF
+TIMEZONE="$TIMEZONE"
+LOCALE="$LOCALE"
+HOSTNAME="$HOSTNAME"
+USERNAME="$USERNAME"
+CPU_UCODE="$CPU_UCODE"
+ROOT_PART_UUID="$ROOT_PART_UUID"
+ROOT_PASS="$ROOT_PASS"
+USER_PASS="$USER_PASS"
+EOF
+
+# -- Copy chroot script --
+cp install/chroot.sh /mnt/root/
+
+# -- Run chroot script --
+arch-chroot /mnt /root/chroot.sh
+
+# -- Clean up sensitive data --
+rm -f /mnt/root/chroot_config.sh
+rm -f /mnt/root/chroot.sh
+
+# -- Unmount --
 echo "Unmounting /mnt..."
 umount -R /mnt
 
-echo "Done. You can now type 'reboot' to restart into your new system."
+echo "Done. You can now type 'reboot' to restart into new system."
 
