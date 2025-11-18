@@ -18,7 +18,7 @@ else
 fi
 
 # Start tailscale
-systemctl start tailscaled
-systemctl enable tailscaled
+sudo systemctl start tailscaled
+sudo systemctl enable tailscaled
 
-tailscale up --accept-routes
+sudo tailscale up --accept-routes

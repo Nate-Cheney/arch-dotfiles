@@ -18,6 +18,6 @@ else
 fi
 
 # Enable & start
-systemctl enable fail2ban.service
-systemctl start fail2ban.service
+sudo systemctl enable fail2ban.service
+sudo systemctl start fail2ban.service
 

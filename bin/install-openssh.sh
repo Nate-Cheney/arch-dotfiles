@@ -19,6 +19,6 @@ else
 fi
 
 # Enable & start
-systemctl enable sshd.service
-systemctl start sshd.service
+sudo systemctl enable sshd.service
+sudo systemctl start sshd.service
 

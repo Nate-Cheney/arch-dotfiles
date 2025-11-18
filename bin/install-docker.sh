@@ -19,12 +19,12 @@ fi
 
 if pacman -Q docker &> /dev/null; then
     # Enable and start docker
-    systemctl enable docker
-    systemctl start docker
+    sudo systemctl enable docker
+    sudo systemctl start docker
 
     # Add user to docker group
-    groupadd docker
-    usermod -aG docker $USER
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
 fi
 
 
