@@ -7,10 +7,6 @@
 # Options:
 #
 
-if [ $EUID -ne 0 ]; then 
-    echo "This script must be run as root."
-    exit 1
-fi
 
 depencencies=(
     "base-devel"
@@ -20,7 +16,7 @@ depencencies=(
 for dep in $dependencies; do 
     if ! pacman -Q $dep &> /dev/null; then
         echo "Installing $dep..."
-        pacman -S --noconfirm --needed $dep
+        sudo pacman -S --noconfirm --needed $dep
     fi
 done
 
