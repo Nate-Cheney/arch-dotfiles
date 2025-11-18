@@ -20,17 +20,29 @@ for dep in $dependencies; do
     fi
 done
 
-# Clone and install yay
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
 
-# Ensure yay was installed
-if command -v yay &> /dev/null; then
-    echo "Yay is installed."
+if ! pacman -Q yay &> /dev/null; then
+    original_dir=$PWD
+    cd $HOME
+    echo "Cloning Yay..."
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    echo "Building Yay..."
+    makepkg -si
+    cd $original_dir
+
+    # Ensure yay was installed
+    if command -v yay &> /dev/null; then
+        echo "Yay is installed."
+    
+    else
+        echo "Yay was not installed properly."
+        exit 1
+    fi
 
 else
-    echo "Yay was not installed properly."
-    exit 1
+    echo "Yay is already installed... skipping."    
+
 fi
+
 

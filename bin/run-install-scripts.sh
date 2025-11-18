@@ -9,11 +9,13 @@
 
 sudo -v
 
+echo "Running yay installer" 
+bash "bin/install-yay.sh"
+
 for file in bin/install-*.sh; do
-    if [ -f "$file" ]; then
+    if [ -f "$file" ] && [ "$file" != "bin/install-yay.sh" ]; then
         echo "Running: $file"
         bash "$file"
-        
     fi
 done
 
