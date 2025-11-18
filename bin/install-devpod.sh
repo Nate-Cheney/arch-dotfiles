@@ -9,6 +9,7 @@
 
 package="devpod-cli-bin"
 
+echo "Installing $package"
 yay -S --noconfirm --needed \
        --answerdiff=None \
        --answerclean=None \

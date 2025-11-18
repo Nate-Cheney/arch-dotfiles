@@ -9,6 +9,7 @@
 
 package="proton-pass-bin"
 
+echo "Installing $package"
 yay -S --noconfirm --needed \
        --answerdiff=None \
        --answerclean=None \

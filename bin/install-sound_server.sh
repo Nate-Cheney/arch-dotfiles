@@ -9,6 +9,7 @@
 
 package="playerctl pwvucontrol"
 
+echo "Installing $package"
 yay -S --noconfirm --needed \
        --answerdiff=None \
        --answerclean=None \

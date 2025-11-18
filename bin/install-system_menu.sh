@@ -17,6 +17,7 @@ packages=(
 )
 
 # Install applications
+echo "Installing ${packages[@]}"
 yay -S --noconfirm --needed \
        --answerdiff=None \
        --answerclean=None \
