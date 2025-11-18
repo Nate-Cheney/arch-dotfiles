@@ -9,11 +9,17 @@
 
 sudo -v
 
+echo "Updating pacman manifest"
+sudo pacman -Sy
+
+echo "Installing git"
+bash "bin/install-git.sh"
+
 echo "Running yay installer" 
 bash "bin/install-yay.sh"
 
 for file in bin/install-*.sh; do
-    if [ -f "$file" ] && [ "$file" != "bin/install-yay.sh" ]; then
+    if [ -f "$file" ] && [[ "$file" != "bin/install-yay.sh" || "$file" != "bin/install-git.sh" ]]; then
         echo "Running: $file"
         bash "$file"
     fi
