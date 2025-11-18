@@ -6,7 +6,7 @@
     "spacing": 2,
     
     // Module layout
-    "modules-left": ["custom/arch", "hyprland/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["wireplumber", "cpu", "memory", "network", "battery"],
 
