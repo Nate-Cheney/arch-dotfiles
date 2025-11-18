@@ -7,7 +7,7 @@
 # Options:
 #
 
-package="ttf-jetbrains-mono ttf-jetbrains-mono-nerd"
+package="noto-fonts-emoji ttf-jetbrains-mono ttf-jetbrains-mono-nerd"
 
 if ! pacman -Q $package &> /dev/null; then
     echo "Installing $package..."
@@ -26,4 +26,6 @@ yay -S --noconfirm --needed \
        --answeredit=None \
        "$package"
 
+echo "Clearing font cache"
+fc-cache -fv
 
