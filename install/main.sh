@@ -52,7 +52,7 @@ echo "Updating system clock..."
 timedatectl set-ntp true
 
 # -- Run disk script --
-bash install/disk.sh
+bash install/bin/disk.sh
 
 # -- Install essential packages --
 echo "Installing essential packages with pacstrap..."
@@ -78,7 +78,7 @@ USER_PASS="$USER_PASS"
 EOF
 
 # -- Copy chroot script --
-cp install/chroot.sh /mnt/root/
+cp install/bin/chroot.sh /mnt/root/
 
 # -- Run chroot script --
 arch-chroot /mnt /root/chroot.sh
