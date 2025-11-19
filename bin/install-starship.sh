@@ -2,21 +2,21 @@
 
 # Author: Nate Cheney
 # Filename: install-starship.sh
-# Description: This script installs starship. 
+# Description: This script installs starship and adds it to the bashrc file. 
 # Usage: sudo ./install-starship.sh
 # Options:
 #
 
 package="starship"
 
-if [ $EUID -ne 0 ]; then 
-    echo "This script must be run as root."
-    exit 1
-fi
-
 if ! pacman -Q $package &> /dev/null; then
     echo "Installing $package..."
-    pacman -S --noconfirm --needed $package
+    sudo pacman -S --noconfirm --needed $package
 else 
     echo "$package is already installed."
 fi
+
+if ! grep -q 'eval "$(starship init bash)"' $HOME/.bashrc; then
+    echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
+fi
+
