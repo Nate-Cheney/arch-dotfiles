@@ -22,6 +22,10 @@ else
     elif [[ $origin =~ ^https:\/\/github.com\/.+$ ]]; then
         url="${origin%.git}"
 
+    elif [[ $origin =~ ^https:\/\/.+?@github.com\/.+$ ]]; then
+        stripped1=${origin##*@}
+        url="https://${stripped1%.git}"
+    
     else 
         echo "The remote origin is not github"
         exit 1
