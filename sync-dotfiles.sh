@@ -39,6 +39,11 @@ download() {
             --exclude='.git/' \
             "./config/$dir/" "$HOME/.config/$dir/"
     done
+
+    for file in "${files[@]}"; do
+        echo "Syncing file: $file"
+        rsync -av "./config/$file" "$HOME/.config/$file"
+    done
 }
 
 upload() {
@@ -50,6 +55,11 @@ upload() {
             --exclude='.git/' \
             "$HOME/.config/$dir/" "./config/$dir/"
     done
+    
+    for file in "${files[@]}"; do
+        echo "Syncing file: $file"
+        rsync -av "$HOME/.config/$file" "./config/$file"
+    done
 }
 
 # Ensure an argument was passed
@@ -60,6 +70,9 @@ fi
 
 # Directories to watch
 directories=("elephant" "hypr" "kitty" "nvim" "uwsm" "walker" "waybar" )
+
+# Files to watch 
+files=("starship.toml")
 
 # Handle options
 while getopts "hdu" opt; do
