@@ -34,7 +34,6 @@ cat << 'EOF_HOSTS' > /etc/hosts
 ::1        localhost
 127.0.1.1  ${HOSTNAME}.localdomain ${HOSTNAME}
 EOF_HOSTS
-# Fix the hostname variable
 sed -i "s/\${HOSTNAME}/${HOSTNAME}/g" /etc/hosts
 
 # Configure mkinitcpio
@@ -88,4 +87,12 @@ bootctl list
 systemctl enable dhcpcd.service
 
 echo "Chroot phase complete."
+
+# Create Dev dir
+dev_dir="/home/$USERNAME/Dev"
+mkdir -p $dev_dir 
+chown $USERNAME:$USERNAME $dev_dir
+
+# Clone dotfiles repo
+git clone --depth 1 https://github.com/Nate-Cheney/arch-dotfiles.git $dev_dir
 
