@@ -4,6 +4,62 @@ The following steps document the process that I used to install Arch Linux with 
 
 Thank you Wai Hon for [this amazing guide](https://whhone.com/posts/arch-linux-full-disk-encryption/) that I used for the initial install.
 
+# Scripted Steps
+
+I've scripted a large portion of the install process. The steps in this section can be used to speed up the process.
+
+## Prerequisites
+
+It is assumed that: 
+- The device uses a UEFI BIOS
+- You have already downloaded the Arch Linux ISO. If not, see [https://archlinux.org/download/](https://archlinux.org/download/)
+- You've booted into the live environment
+- You've connected to the internet
+- You've installed git in the live environment
+- You've cloned this repository in the live environment
+
+## Install
+
+#### 1. Install the system 
+
+Run the following script and follow the prompts. 
+
+``` bash
+./install/main.sh
+```
+
+Reboot the computer.
+
+``` bash
+reboot
+```
+
+#### 2. Install packages and configure the GUI 
+
+Install all packages. 
+
+``` bash
+./install/run-install-scripts.sh
+```
+
+Configure the GUI. 
+
+``` bash
+./install/configure-gui.sh
+```
+
+Reboot the computer.
+
+``` bash
+reboot
+```
+
+The computer should boot into the SDDM login window.
+
+# Manual Steps
+
+The following steps can be used to install Arch Manually.
+
 ## Prerequisites
 
 It is assumed that: 
