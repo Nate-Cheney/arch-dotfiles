@@ -13,7 +13,7 @@ depencencies=(
     "git"
 )
 
-for dep in $dependencies; do 
+for dep in "${dependencies[@]}"; do 
     if ! pacman -Q $dep &> /dev/null; then
         echo "Installing $dep..."
         sudo pacman -S --noconfirm --needed $dep

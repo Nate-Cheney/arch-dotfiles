@@ -94,5 +94,5 @@ mkdir -p $dev_dir
 chown $USERNAME:$USERNAME $dev_dir
 
 # Clone dotfiles repo
-git clone --depth 1 https://github.com/Nate-Cheney/arch-dotfiles.git $dev_dir
+git clone --depth 1 https://github.com/Nate-Cheney/arch-dotfiles.git "$dev_dir/arch-dotfiles"
 

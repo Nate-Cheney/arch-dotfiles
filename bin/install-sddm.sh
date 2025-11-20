@@ -16,3 +16,5 @@ if ! pacman -Q $package &> /dev/null; then
 else 
     echo "$package is already installed."
 fi
+
+sudo systemctl enable sddm
