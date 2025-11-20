@@ -8,7 +8,7 @@
     // Module layout
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["wireplumber", "cpu", "memory", "network", "battery"],
+    "modules-right": ["wireplumber", "memory", "network", "battery"],
 
     // Left modules
     "custom/arch": {
@@ -89,8 +89,8 @@
         "tooltip": true,
         "interval": 1,
         "tooltip-format": "{ipaddr}/{cidr} -  {bandwidthUpBytes}  {bandwidthDownBytes}",
-        "tooltip-format-wifi": "SSID: {essid} - Frequency: {frequency} - Strength: {signalStrength} - {ipaddr}/{cidr} -  {bandwidthUpBytes}  {bandwidthDownBytes}"
-        //"on-click-right": "nm-connection-editor"
+        "tooltip-format-wifi": "SSID: {essid} - Frequency: {frequency} - Strength: {signalStrength} - {ipaddr}/{cidr} -  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "on-click": "kitty -e impala"
     },
 
     "battery": {
