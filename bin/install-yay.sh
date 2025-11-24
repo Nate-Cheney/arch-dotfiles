@@ -8,7 +8,7 @@
 #
 
 
-depencencies=(
+dependencies=(
     "base-devel"
     "git"
 )

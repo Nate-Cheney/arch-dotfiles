@@ -29,12 +29,11 @@ echo "LANG=${LOCALE}" > /etc/locale.conf
 # Network configuration
 echo "Configuring network (hostname: $HOSTNAME)..."
 echo "$HOSTNAME" > /etc/hostname
-cat << 'EOF_HOSTS' > /etc/hosts
+cat << EOF_HOSTS > /etc/hosts
 127.0.0.1  localhost
 ::1        localhost
 127.0.1.1  ${HOSTNAME}.localdomain ${HOSTNAME}
 EOF_HOSTS
-sed -i "s/\${HOSTNAME}/${HOSTNAME}/g" /etc/hosts
 
 # Configure mkinitcpio
 echo "Configuring mkinitcpio hooks..."

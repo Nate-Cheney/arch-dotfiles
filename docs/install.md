@@ -36,16 +36,18 @@ reboot
 
 #### 2. Install packages and configure the GUI 
 
+Log in as the regular (non root) user.
+
 Install all packages. 
 
 ``` bash
-./install/run-install-scripts.sh
+~/Dev/arch-dotfiles/install/run-install-scripts.sh
 ```
 
 Configure the GUI. 
 
 ``` bash
-./install/configure-gui.sh
+~/Dev/arch-dotfiles/install/configure-gui.sh
 ```
 
 Reboot the computer.

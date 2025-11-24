@@ -13,13 +13,13 @@ echo "Updating pacman manifest"
 sudo pacman -Sy
 
 echo "Installing git"
-bash "bin/install-git.sh"
+bash "~/Dev/arch-dotfiles/bin/install-git.sh"
 
 echo "Running yay installer" 
-bash "bin/install-yay.sh"
+bash "~/Dev/arch-dotfiles/bin/install-yay.sh"
 
-for file in bin/install-*.sh; do
-    if [ -f "$file" ] && [[ "$file" != "bin/install-yay.sh" && "$file" != "bin/install-git.sh" ]]; then
+for file in ~/Dev/arch-dotfiles/bin/install-*.sh; do
+    if [ -f "$file" ] && [[ "$file" != "~/Dev/arch-dotfiles/bin/install-yay.sh" && "$file" != "~/Dev/arch-dotfiles/bin/install-git.sh" ]]; then
         echo "Running: $file"
         bash "$file"
     fi
