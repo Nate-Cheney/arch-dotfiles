@@ -20,7 +20,13 @@ It is assumed that:
 
 ## Install
 
+#### 0. Edit variables
+
+Modify the variables set in `install/config.sh` as desired. Make sure to change the hostname as the default one will fail (ends with '-').
+
 #### 1. Install the system 
+
+
 
 Run the following script and follow the prompts. 
 
@@ -38,16 +44,22 @@ reboot
 
 Log in as the regular (non root) user.
 
+Navigate to the dotfiles repo.
+
+``` bash
+cd ~/Dev/arch-dotfiles
+```
+
 Install all packages. 
 
 ``` bash
-~/Dev/arch-dotfiles/install/run-install-scripts.sh
+./install/run-install-scripts.sh
 ```
 
 Configure the GUI. 
 
 ``` bash
-~/Dev/arch-dotfiles/install/configure-gui.sh
+./install/configure-gui.sh
 ```
 
 Reboot the computer.

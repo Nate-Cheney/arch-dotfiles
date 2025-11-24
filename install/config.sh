@@ -4,5 +4,5 @@ ROOT_PART="${DISK}p2"
 BOOT_PART="${DISK}p1"
 TIMEZONE="America/Detroit"
 LOCALE="en_US.UTF-8"
-HOSTNAME="nate-"
+HOSTNAME="nate-"  # MUST CHANGE THIS
 USERNAME="nate"

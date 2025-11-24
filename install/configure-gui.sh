@@ -13,15 +13,15 @@ session_path="/usr/share/wayland-sessions"
 session_file="hyprland-uwsm.desktop"
 
 if [ ! -d $session_path ]; then
-    mkdir -p "$session_path"
+    sudo mkdir -p "$session_path"
 fi
 
 if [ ! -f "$session_path/$session_file" ]; then
-    touch "$session_path/$session_file"
+    sudo touch "$session_path/$session_file"
 fi
     
-if ! grep -q "Name=Hyprland (uwsm-managed)" "$session_path/$session_file"; then
-    cat <<EOF | sudo tee -a "$session_path/$session_file" > /dev/null
+if ! sudo grep -q "Name=Hyprland (uwsm-managed)" "$session_path/$session_file"; then
+    cat <<EOF | sudo sudo tee -a "$session_path/$session_file" > /dev/null
 [Desktop Entry]
 Name=Hyprland (uwsm-managed)
 Comment=A UWSM-managed Hyprland session
