@@ -49,6 +49,9 @@ echo n      # New partition
 echo 2      # Partition number
 echo        # Default first sector
 echo        # Default last sector (use remaining space)
+echo t      # Change type
+echo 2      # Select partition 2
+echo 20     # Linux filesystem
 echo w      # Write changes
 ) | fdisk $DISK
 

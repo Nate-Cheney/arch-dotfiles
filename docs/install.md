@@ -329,7 +329,7 @@ Review the configuration with `bootctl list`
 
 #### 16. Reboot
 
-Exit the chroot environment by typing `exit` or `Ctrl+D`. Then run `reboot` .
+Exit the chroot environment by typing `exit` or `Ctrl+D`. Then run `reboot`.
 
-Once the reboot has happened, you will probably have to enable dhcp with `sudo systemctl enable --now dhcp`.
+Once the reboot has happened, you will probably have to enable dhcp with `sudo systemctl enable --now dhcpcd`.
 
