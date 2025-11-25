@@ -7,7 +7,7 @@
 # Options:
 #
 
-package="thunar"
+package="gvfs thunar"
 
 
 if ! pacman -Q $package &> /dev/null; then
