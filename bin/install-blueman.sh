@@ -7,7 +7,7 @@
 # Options:
 #
 
-package="blueman"
+package="bluez  bluez-utils blueman"
 
 
 if ! pacman -Q $package &> /dev/null; then
@@ -16,3 +16,6 @@ if ! pacman -Q $package &> /dev/null; then
 else 
     echo "$package is already installed."
 fi
+
+sudo systemctl enable bluetooth
+sudo systemctl start bluetooth
