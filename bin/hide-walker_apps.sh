@@ -18,6 +18,7 @@ APPS=(
     "avahi-discover.desktop"
     "bssh.desktop"
     "bvnc.desktop"
+    "cmake-gui.desktop"
     "electron37.desktop"
     "lstopo.desktop" 
     "qv4l2.desktop"
