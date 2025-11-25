@@ -82,8 +82,9 @@ EOF_ARCH_CONF
 echo "Boot configuration:"
 bootctl list
 
-# Enable dhcpd
+# Enable dhcpd and iwd
 systemctl enable dhcpcd.service
+systemctl enable iwd.service
 
 echo "Chroot phase complete."
 
