@@ -56,7 +56,7 @@ bash install/bin/disk.sh
 
 # -- Install essential packages --
 echo "Installing essential packages with pacstrap..."
-pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware git neovim sudo
+pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware iwd git neovim sudo
 
 # -- Generate an fstab file --
 echo "Generating fstab..."
