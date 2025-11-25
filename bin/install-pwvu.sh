@@ -7,7 +7,7 @@
 # Options:
 #
 
-package="pwvucontrol"
+package="alsa-utils alsa-ucm-conf pwvucontrol pipewire pipewire-alsa pipewire-pulse sof-firmware wireplumber"
 
 echo "Installing $package"
 yay -S --noconfirm --needed \
@@ -15,3 +15,6 @@ yay -S --noconfirm --needed \
        --answerclean=None \
        --answeredit=None \
        "$package"
+
+systemctl --user enable wireplumber pipewire pipewire-pulse
+systemctl --user start wireplumber pipewire pipewire-pulse
