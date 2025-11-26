@@ -7,7 +7,7 @@
 # Options:
 #
 
-package="hyprcursor hyprgraphics hypridle hyprland hyprland-guiutils hyprlang hyprpaper hyprshot hyprsunset hyprutils hyprwayland-scanner xdg-desktop-portal-hyprland"
+package="hyprcursor hyprgraphics hypridle hyprland hyprland-guiutils hyprlang hyprlock hyprpaper hyprshot hyprsunset hyprutils hyprwayland-scanner xdg-desktop-portal-hyprland"
 
 
 if ! pacman -Q $package &> /dev/null; then
