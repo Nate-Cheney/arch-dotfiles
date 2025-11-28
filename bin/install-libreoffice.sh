@@ -7,7 +7,7 @@
 # Options:
 #
 
-package="libreoffice-nightly hunspell-en_u"
+package="libreoffice-fresh hunspell-en_us"
 
 
 if ! pacman -Q $package &> /dev/null; then
