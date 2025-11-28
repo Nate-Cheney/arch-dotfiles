@@ -17,7 +17,7 @@ else
 fi
 
 
-package="ttf-ms-win11-auto"
+package="ttf-ms-fonts"
 
 echo "Installing $package"
 yay -S --noconfirm --needed \
