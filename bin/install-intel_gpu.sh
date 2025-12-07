@@ -33,7 +33,7 @@ main() {
         echo "Installing $package..."
          pacman -S --noconfirm --needed "${packages[@]}"
     else 
-        echo "$package is already installed."
+        echo "Intel GPU packages already installed."
     fi
 }
 
@@ -42,15 +42,15 @@ clean() {
 
     # Remove nvidia packages
     if pacman -Qs nvidia > /dev/null; then
-         pacman -Rns --noconfirm nvidia nvidia-utils lib32-nvidia-utils nvidia-settings 2>/dev/null || echo "Some nvidia packages not found, proceeding..."
+        pacman -Rns --noconfirm nvidia-utils lib32-nvidia-utils nvidia-settings 2>/dev/null || echo "Some nvidia packages not found, proceeding..."
     fi
 
     # Backup and replace nvidia modules with xe
-     cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
-     sed -i 's/^MODULES=(.*nvidia.*)/MODULES=(xe)/' /etc/mkinitcpio.conf
+    cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
+    sed -i "s/^MODULES=(.*nvidia.*)/MODULES=(xe)/" /etc/mkinitcpio.conf
 
     echo "Regenerating initramfs..."
-     mkinitcpio -P
+    mkinitcpio -P
 
 }
 
