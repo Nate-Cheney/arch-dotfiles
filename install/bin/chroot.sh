@@ -27,23 +27,41 @@ locale-gen
 echo "LANG=${LOCALE}" > /etc/locale.conf
 
 # Network configuration
-echo "Configuring network (hostname: $HOSTNAME)..."
+echo "Configuring network..."
+
 echo "$HOSTNAME" > /etc/hostname
+
 cat << EOF_HOSTS > /etc/hosts
 127.0.0.1  localhost
 ::1        localhost
 127.0.1.1  ${HOSTNAME}.localdomain ${HOSTNAME}
 EOF_HOSTS
 
-# Enable dhcpd and iwd
-systemctl enable dhcpcd.service
-systemctl enable iwd.service
+cat << EOF_HOSTS > /etc/systemd/network/20-wired.network
+[Match]
+Name=en*
 
-# Set up DNS
+[Network]
+DHCP=yes
+EOF_HOSTS
+
+cat << EOF_HOSTS > /etc/systemd/network/25-wireless.network
+[Match]
+Name=wl*
+
+[Network]
+DHCP=yes
+IgnoreCarrierLoss=3s
+EOF_HOSTS
+
 cat <<EOF >> /etc/resolv.conf.head
 nameserver 1.1.1.1
 nameserver 1.0.0.1
 EOF
+
+# Enable systemd-networkd and iwd
+systemctl enable systemd-networkd.service
+systemctl enable iwd.service
 
 # Configure mkinitcpio
 echo "Configuring mkinitcpio hooks..."
