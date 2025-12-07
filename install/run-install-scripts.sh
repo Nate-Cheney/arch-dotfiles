@@ -24,7 +24,7 @@ echo "Running yay installer"
 bash "bin/install-yay.sh"
 
 for file in bin/install-*.sh; do
-    if [ -f "$file" ] && [[ "$file" != "bin/install-yay.sh" && "$file" != "bin/install-git.sh" ]]; then
+    if [ -f "$file" ] && [[ "$file" != "bin/install-yay.sh" && "$file" != "bin/install-git.sh" && "$file" != "bin/install-intel_gpu" ]]; then
         echo "Running: $file"
         bash "$file"
     fi
