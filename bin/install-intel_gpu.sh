@@ -11,11 +11,11 @@
 #
 
 main() {
-    package="mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver libva-intel-driver"
+    packages=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver libva-intel-driver)
     
     if ! pacman -Q $package &> /dev/null; then
         echo "Installing $package..."
-        sudo pacman -S --noconfirm --needed $package
+        sudo pacman -S --noconfirm --needed "${packages[@]}"
     else 
         echo "$package is already installed."
     fi
@@ -26,7 +26,7 @@ usage() {
 Usage: ./install-intel_gpu.sh
 
 Options:
-  -c (cleans up old nvidia config and packages)
+  -c cleans up old nvidia config and packages, updates mkinitcpio
 
 EOF
 	exit 0
@@ -35,10 +35,18 @@ EOF
 clean() {
     main
 
-    # Replace nvidia modules with xe
-    sudo sed -i "s/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/MODULES=(xe)" 
+    # Remove nvidia packages
+    if pacman -Qs nvidia > /dev/null; then
+        sudo pacman -Rns --noconfirm nvidia nvidia-utils lib32-nvidia-utils nvidia-settings 2>/dev/null || echo "Some nvidia packages not found, proceeding..."
+    fi
 
+    # Backup and replace nvidia modules with xe
+    sudo cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
+    sudo sed -i 's/^MODULES=(.*nvidia.*)/MODULES=(xe)/' /etc/mkinitcpio.conf
+
+    echo "Regenerating initramfs..."
     sudo mkinitcpio -P
+
 }
 
 # No option run main
