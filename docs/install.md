@@ -26,8 +26,6 @@ Modify the variables set in `install/config.sh` as desired. Make sure to change 
 
 #### 1. Install the system 
 
-
-
 Run the following script and follow the prompts. 
 
 ``` bash
@@ -50,16 +48,10 @@ Navigate to the dotfiles repo.
 cd ~/Dev/arch-dotfiles
 ```
 
-Install all packages. 
+Run the post install configuration script.
 
 ``` bash
-./install/run-install-scripts.sh
-```
-
-Configure the GUI. 
-
-``` bash
-./install/configure-gui.sh
+./install/post-config.sh
 ```
 
 Reboot the computer.
