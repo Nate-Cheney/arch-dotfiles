@@ -61,6 +61,7 @@ EOF
 
 # Enable systemd-networkd and iwd
 systemctl enable systemd-networkd.service
+systemctl enable systemd-resolved.service
 systemctl enable iwd.service
 
 # Configure mkinitcpio
