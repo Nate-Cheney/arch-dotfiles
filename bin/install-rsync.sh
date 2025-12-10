@@ -9,7 +9,6 @@
 
 package="rsync"
 
-
 if ! pacman -Q $package &> /dev/null; then
     echo "Installing $package..."
     sudo pacman -S --noconfirm --needed $package
