@@ -20,11 +20,17 @@ sudo pacman -Sy
 echo "Installing git"
 bash "bin/install-git.sh"
 
+echo "Configuring git"
+bash "bin/configure-git.sh"
+
 echo "Running yay installer" 
 bash "bin/install-yay.sh"
 
+echo "Installing rsync"
+bash "bin/install-rsync.sh"
+
 for file in bin/install-*.sh; do
-    if [ -f "$file" ] && [[ "$file" != "bin/install-yay.sh" && "$file" != "bin/install-git.sh" && "$file" != "bin/install-intel_gpu" ]]; then
+    if [ -f "$file" ] && [[ "$file" != "bin/install-intel_gpu" ]]; then
         echo "Running: $file"
         bash "$file"
     fi
