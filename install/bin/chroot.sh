@@ -54,9 +54,10 @@ DHCP=yes
 IgnoreCarrierLoss=3s
 EOF_HOSTS
 
-cat <<EOF >> /etc/resolv.conf.head
-nameserver 1.1.1.1
-nameserver 1.0.0.1
+cat <<EOF >> /etc/systemd/resolved.conf.d/dns_servers.conf
+[Resolve]
+DNS=1.1.1.1 1.0.0.1
+Domains=~.
 EOF
 
 # Enable systemd-networkd and iwd
