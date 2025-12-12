@@ -60,10 +60,13 @@ DNS=1.1.1.1 1.0.0.1
 Domains=~.
 EOF
 
-# Enable systemd-networkd and iwd
+# Enable network stack via systemd
 systemctl enable systemd-networkd.service
 systemctl enable systemd-resolved.service
 systemctl enable iwd.service
+
+# Disable systemd-networkd wait service (causes time out issues)
+systemctl disable systemd-networkd-wait-online.service
 
 # Configure mkinitcpio
 echo "Configuring mkinitcpio hooks..."
