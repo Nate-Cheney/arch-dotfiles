@@ -25,20 +25,14 @@ else
     echo "Intel GPU packages already installed."
 fi
 
-# Configure initramfs modules
-if ! grep -q "nvidia" /etc/mkinitcpio.conf; then
-    echo "Nvidia modules not found in mkinitcpio config. Adding them..."
-    
-    # Create mkinitcpio backup
-    cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
 
-    # Insert nvidia modules
-    sed -i "s/^MODULES=(\(.*\))/MODULES=(\1 nvidia nvidia_modeset nvidia_uvm nvidia_drm)/" /etc/mkinitcpio.conf
 
-    # Clean up any potential double spaces if the array was originally empty 
-    sed -i 's/MODULES=( /MODULES=(/' /etc/mkinitcpio.conf
+echo "Backing up mkinitcpio..."
+cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
 
-    echo "Regenerating initramfs..."
-    mkinitcpio -P
-fi
+echo "Ensuring nvidia drivers are loaded during boot..."
+sed -i "/^MODULES=([^)]*\bnvidia nvidia_modeset nvidia_uvm nvidia_drm\b[^)]*)/! s/^MODULES=([^)]*/& nvidia nvidia_modeset nvidia_uvm nvidia_drm/" /etc/mkinitcpio.conf
+
+echo "Regenerating initramfs..."
+mkinitcpio -P
 

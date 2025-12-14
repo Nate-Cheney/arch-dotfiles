@@ -24,6 +24,12 @@ else
     echo "Intel GPU packages already installed."
 fi
 
-# Ensure xe is loaded during boot
+echo "Backing up mkinitcpio..."
+cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
+
+echo "Ensuring nvidia drivers are loaded during boot..."
 sed -i "/^MODULES=([^)]*\bxe\b[^)]*)/! s/^MODULES=([^)]*/& xe/" /etc/mkinitcpio.conf
+
+echo "Regenerating initramfs..."
+mkinitcpio -P
 
