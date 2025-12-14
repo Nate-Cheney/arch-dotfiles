@@ -2,4 +2,5 @@ source ~/.config/uwsm/gtk
 source ~/.config/uwsm/qt
 
 # -- Optional 
+#source ~/.config/uwsm/env-hyprland
 #source ~/.config/uwsm/nvidia
