@@ -29,7 +29,7 @@ fi
 
 sudo mkdir -p "/etc/greetd"
 
-cat <<EOF_GREETD | sudo sudo tee -a "/etc/greetd/config.toml" > /dev/null
+cat <<EOF_GREETD | sudo sudo tee "/etc/greetd/config.toml" > /dev/null
 [terminal]
 # The VT to run the greeter on. Can be "next", "current" or a number
 vt = 1
@@ -45,7 +45,7 @@ command = "uwsm start -- hyprland.desktop"
 user = "nate"
 EOF_GREETD
 
-cat <<EOF_REGREET | sudo sudo tee -a "/etc/greetd/regreet.toml" > /dev/null
+cat <<EOF_REGREET | sudo sudo tee "/etc/greetd/regreet.toml" > /dev/null
 [background]
 path = "/usr/share/backgrounds/greeter.jpg"
 fit = "Cover"
@@ -68,7 +68,7 @@ timezone = "America/Detroit"
 label_width = 150
 EOF_REGREET
 
-cat <<EOF_HYPRCONF | sudo tee -a "/etc/greetd/hyprland.conf" > /dev/null
+cat <<EOF_HYPRCONF | sudo tee "/etc/greetd/hyprland.conf" > /dev/null
 exec-once = regreet; hyprctl dispatch exit
 misc {
     disable_hyprland_logo = true
