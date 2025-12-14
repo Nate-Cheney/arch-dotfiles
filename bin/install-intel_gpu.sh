@@ -24,13 +24,6 @@ else
     echo "Intel GPU packages already installed."
 fi
 
-cat << EOF
-Now that the required packages are installed, do the following:
+# Ensure xe is loaded during boot
+sed -i "/^MODULES=([^)]*\bxe\b[^)]*)/! s/^MODULES=([^)]*/& xe/" /etc/mkinitcpio.conf
 
-1. Add xe to the initcpio modules.
-2. Note the PCI ID with: lspci -nnd ::03xx
-3. Add the following to the kernal parameters
-    i915.force_probe=!<ID> xe.force_probe=<ID>
-
-DOCS: https://wiki.archlinux.org/title/Intel_graphics#Testing_the_new_experimental_Xe_driver
-EOF
