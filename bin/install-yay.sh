@@ -21,28 +21,21 @@ for dep in "${dependencies[@]}"; do
 done
 
 
-if ! pacman -Q yay &> /dev/null; then
-    original_dir=$PWD
-    cd $HOME
-    echo "Cloning Yay..."
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    echo "Building Yay..."
-    makepkg -si
-    cd $original_dir
+original_dir=$PWD
+cd $HOME
+echo "Cloning Yay..."
+git clone https://aur.archlinux.org/yay.git
+cd yay
+echo "Building Yay..."
+makepkg -si
+cd $original_dir
 
-    # Ensure yay was installed
-    if command -v yay &> /dev/null; then
-        echo "Yay is installed."
+# Ensure yay was installed
+if command -v yay &> /dev/null; then
+    echo "Yay is installed."
     
-    else
-        echo "Yay was not installed properly."
-        exit 1
-    fi
-
 else
-    echo "Yay is already installed... skipping."    
-
+    echo "Yay was not installed properly."
+    exit 1
 fi
-
 
