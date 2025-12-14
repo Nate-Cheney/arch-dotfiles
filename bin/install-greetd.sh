@@ -68,5 +68,14 @@ timezone = "America/Detroit"
 label_width = 150
 EOF_REGREET
 
+cat <<EOF_HYPRCONF | sudo tee -a "/etc/greetd/hyprland.conf" > /dev/null
+exec-once = regreet; hyprctl dispatch exit
+misc {
+    disable_hyprland_logo = true
+    disable_splash_rendering = true
+    disable_hyprland_guiutils_check = true
+}
+EOF_HYPRCONF
+
 sudo systemctl enable greetd.service
 
