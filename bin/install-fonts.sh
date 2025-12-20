@@ -7,7 +7,7 @@
 # Options:
 #
 
-package="noto-fonts-emoji ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-liberation"
+package="noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-liberation"
 
 if ! pacman -Q $package &> /dev/null; then
     echo "Installing $package..."
