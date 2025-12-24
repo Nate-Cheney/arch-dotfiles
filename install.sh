@@ -7,20 +7,24 @@
 # Options:
 #
 
+
 # Exit immediately if a command exits with a non-zero status
 set -eEo pipefail
 
-# Get ucode package
-vendor=$(lscpu | awk '/Vendor ID/ {print $3}')
-if (vendor == "AuthenticAMD"); then
-    cpu_ucode="amd-ucode"
-else
-    cpu_ucode="intel-ucode"
-fi
+# -- Get prerequisite info
+source "./install/pre/disk.sh"
+source "./install/pre/locale.sh"
+# TODO: 
+source "./install/pre/timezone.sh"
+source "./install/pre/ucode.sh"
 
-# TODO: get/verify the following info
-# DISK="/dev/nvme0n1"
-# ROOT_PART="${DISK}p2"
-# BOOT_PART="${DISK}p1"
-# TIMEZONE="America/Detroit"
-# LOCALE="en_US.UTF-8"
+# -- chroot
+
+
+# -- install packages
+
+
+# -- configure gui
+
+
+# -- final wrap-u

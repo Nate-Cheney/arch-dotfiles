@@ -27,7 +27,7 @@ while true; do
         [Nn]* )
             echo -e "\nTry again"
         ;;
-        * ) "Enter either y or n";;
+        * ) echo "Enter either y or n";;
     esac
 done
 
