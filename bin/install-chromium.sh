@@ -2,17 +2,17 @@
 
 # Author: Nate Cheney
 # Filename: install-chromium.sh
-# Description: This script installs chromium. 
+# Description: This script installs chromium and widevine for DRM.
 # Usage: sudo ./install-chromium.sh
 # Options:
 #
 
-package="chromium"
+packages=(chromium chromium-widevine)
 
-
-if ! pacman -Q $package &> /dev/null; then
+if ! pacman -Q "${packages[@]}" &> /dev/null; then
     echo "Installing $package..."
-    sudo pacman -S --noconfirm --needed $package
+    pacman -S --noconfirm --needed "${packages[@]}"
 else 
-    echo "$package is already installed."
+    echo "${packages[@]} are already installed"
 fi
+

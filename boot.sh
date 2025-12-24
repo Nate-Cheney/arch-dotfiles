@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # Author: Nate Cheney
 # Filename: boot.sh 
