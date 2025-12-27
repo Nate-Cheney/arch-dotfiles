@@ -8,8 +8,9 @@
 #
 
 vendor=$(lscpu | awk '/Vendor ID/ {print $3}')
-if (vendor == "AuthenticAMD"); then
+if ("$vendor" == "AuthenticAMD"); then
     CPU_UCODE="amd-ucode"
 else
     CPU_UCODE="intel-ucode"
 fi
+export $CPU_UCODE

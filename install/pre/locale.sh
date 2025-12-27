@@ -11,8 +11,10 @@
 if [ -f "unattend.json" ]; then
     unattend_locale=$(jq -r ".locale" unattend.json)
     LOCALE=$unattend_locale
+    export $LOCALE
     return
 fi
 
 LOCALE="en_US.UTF-8"
+export $LOCALE
 

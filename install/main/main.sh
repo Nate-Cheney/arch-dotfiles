@@ -28,7 +28,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 source "./install/main/create-config.sh"
 
 # -- Copy chroot scripts
-cp ./install/chroot/ /mnt/root/
+cp -r ./install/chroot/ /mnt/root/
 
 # -- Run chroot script --
 arch-chroot /mnt /root/chroot/main.sh
