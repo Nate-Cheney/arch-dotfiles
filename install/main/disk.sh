@@ -86,6 +86,15 @@ mount $BOOT_PART /mnt/boot || {
     exit 1
 }
 
+ROOT_PART_UUID=$(blkid -s UUID -o value "$ROOT_PART")
+if [ -z "$ROOT_PART_UUID" ]; then
+    echo "ERROR: Failed to get UUID for $ROOT_PART"
+    umount /mnt/boot
+    umount /mnt
+    cryptsetup close cryptroot
+    exit 1
+fi
+
 echo "Disk setup complete"
 lsblk $DISK
 

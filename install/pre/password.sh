@@ -16,7 +16,7 @@ while true; do
     fi
     read -s -p "Confirm root password: " ROOT_PASS_CONFIRM
     if [ "$ROOT_PASS" == "$ROOT_PASS_CONFIRM" ]; then
-        export $ROOT_PASS
+        export ROOT_PASS
         echo "Root passwords match."
         break
     fi
@@ -32,7 +32,7 @@ while true; do
     fi
     read -s -p "Confirm $USERNAME password: " USER_PASS_CONFIRM
     if [ "$USER_PASS" == "$USER_PASS_CONFIRM" ]; then
-        export $USER_PASS
+        export USER_PASS
         echo "User passwords match"
         break
     fi

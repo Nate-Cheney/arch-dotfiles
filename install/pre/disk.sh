@@ -40,11 +40,9 @@ if [ -f "unattend.json" ]; then
         disk="$unattend_drive"
         echo "Found unattend_drive: $disk"
         get_disk_paths $disk
-        ROOT_PART_UUID=$(blkid -s UUID -o value $ROOT_PART)  # UUID for bootloader 
         export DISK
         export BOOT_PART
         export ROOT_PART
-        export ROOT_PART_UUID
         return
     fi
 fi
@@ -61,11 +59,9 @@ select choice in "${drive_list[@]}"; do
         
         if [[ $confirm == [Yy]* ]]; then
             get_disk_paths $disk
-            ROOT_PART_UUID=$(blkid -s UUID -o value $ROOT_PART)  # UUID for bootloader 
             export DISK
             export BOOT_PART
             export ROOT_PART
-            export ROOT_PART_UUID
             break # Exit the select loop
         else
             echo "Selection cancelled. Choose again."

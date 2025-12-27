@@ -21,19 +21,27 @@ echo "Installing git"
 bash "/root/chroot/bin/install-git.sh"
 
 echo "Configuring git"
-bash "/root/chroot/bin/configure-git.sh"
+su - "$USERNAME" -c "bash /root/chroot/bin/configure-git.sh"
 
 echo "Running yay installer" 
-bash "/root/chroot/bin/install-yay.sh"
+su - "$USERNAME" -c "bash /root/chroot/bin/install-yay.sh"
 
 echo "Installing rsync"
 bash "/root/chroot/bin/install-rsync.sh"
 
 for file in /root/chroot/bin/install-*.sh; do
+    if [[ "$file" == *"install-git.sh" ]] || [[ "$file" == *"install-yay.sh" ]] || [[ "$file" == *"install-rsync.sh" ]]; then
+        continue
+    fi
+
     if [ -f "$file" ]; then
         echo "Running: $file"
-        bash "$file"
+        if grep -q "yay -S" "$file"; then
+            su - "$USERNAME" -c "bash $file"
+        else
+            bash "$file"
+        fi
     fi
 done
-
+echo "Package installation complete."
 

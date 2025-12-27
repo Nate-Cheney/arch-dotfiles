@@ -14,7 +14,7 @@ if [ -f "unattend.json" ]; then
     if timedatectl list-timezones | grep -qx "$unattend_timezone"; then
         echo "Unattend timezone: $unattend_timezone exists"
         TIMEZONE=$unattend_timezone
-        export $TIMEZONE
+        export TIMEZONE
         return
     fi
 fi
@@ -24,11 +24,11 @@ api_timezone=$(curl https://ipapi.co/timezone)
 if timedatectl list-timezones | grep -qx "$api_timezone"; then
     echo "IP API timezone: $api_timezone exists"
     TIMEZONE=$api_timezone
-    export $TIMEZONE
+    export TIMEZONE
     return
 fi
 
 # Default
 TIMEZONE="America/New_York"
-export $TIMEZONE
+export TIMEZONE
 

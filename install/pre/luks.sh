@@ -16,7 +16,7 @@ while true; do
     fi
     read -s -p "Confirm LUKS passphrase: " LUKS_PASS_CONFIRM
     if [ "$LUKS_PASS" == "$LUKS_PASS_CONFIRM" ]; then
-        export $LUKS_PASS
+        export LUKS_PASS
         break
     fi
     echo "Passphrases do not match. Please try again."

@@ -13,4 +13,4 @@ if ("$vendor" == "AuthenticAMD"); then
 else
     CPU_UCODE="intel-ucode"
 fi
-export $CPU_UCODE
+export CPU_UCODE

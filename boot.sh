@@ -16,6 +16,7 @@ set -eEo pipefail
 while true; do    
     read -p "Enter the desired hostname:" HOST_NAME
     read -p "Enter the desired username:" USERNAME
+    echo
     read -p "Are the following correct (y/n)? hostname: $HOST_NAME \nusername: $USERNAME" yesno
     case $yesno in
         [Yy]* )
@@ -31,7 +32,7 @@ while true; do
     esac
 done
 
-pacman -Syu git
+pacman -Syu --noconfirm git
 
 echo -e "\nCloning https://github.com/Nate-Cheney/arch-dotfiles.git"
 rm -rf ./arch-dotfiles/
@@ -39,5 +40,6 @@ git clone "https://github.com/Nate-Cheney/arch-dotfiles.git" > dev/null
 
 cd arch-dotfiles
 echo -e "\nBeginning install..."
-source ./install.sh
+./install.sh
+cd ..
 

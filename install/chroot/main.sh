@@ -15,6 +15,5 @@ source "/root/chroot/locale.sh"
 source "/root/chroot/network.sh"
 source "/root/chroot/boot.sh"
 source "/root/chroot/user.sh"
-source "/root/chroot/packages"
-source "/root/chroot/bin/hide-apps.sh"
-
+source "/root/chroot/packages.sh"
+su - "$USERNAME" -c "bash /root/chroot/bin/hide-apps.sh"
