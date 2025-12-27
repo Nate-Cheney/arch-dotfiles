@@ -18,22 +18,8 @@ source "./install/pre/luks.sh"
 source "./install/pre/password.sh"
 source "./install/pre/timezone.sh"
 source "./install/pre/ucode.sh"
-
 source "./install/pre/create-config.sh"
 
 # -- Main
-
-
-# TODO: 
-# -- chroot
-
-
-# -- install packages
-
-
-# -- configure gui
-
-
-# -- final wrap-up
-
+source "./install/main/main.sh"
 
