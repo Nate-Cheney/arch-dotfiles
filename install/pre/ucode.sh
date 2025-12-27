@@ -9,7 +9,7 @@
 
 vendor=$(lscpu | awk '/Vendor ID/ {print $3}')
 if (vendor == "AuthenticAMD"); then
-    cpu_ucode="amd-ucode"
+    CPU_UCODE="amd-ucode"
 else
-    cpu_ucode="intel-ucode"
+    CPU_UCODE="intel-ucode"
 fi

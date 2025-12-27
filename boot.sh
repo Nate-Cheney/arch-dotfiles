@@ -37,6 +37,7 @@ echo -e "\nCloning https://github.com/Nate-Cheney/arch-dotfiles.git"
 rm -rf ./arch-dotfiles/
 git clone "https://github.com/Nate-Cheney/arch-dotfiles.git" > dev/null
 
+cd arch-dotfiles
 echo -e "\nBeginning install..."
-source arch-dotfiles/install.sh
+source ./install.sh
 

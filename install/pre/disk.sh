@@ -57,6 +57,7 @@ select choice in "${drive_list[@]}"; do
         
         if [[ $confirm == [Yy]* ]]; then
             get_disk_paths $disk
+            ROOT_PART_UUID=$(blkid -s UUID -o value $ROOT_PART)  # UUID for bootloader 
             break # Exit the select loop
         else
             echo "Selection cancelled. Choose again."
