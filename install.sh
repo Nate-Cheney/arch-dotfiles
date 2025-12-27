@@ -11,13 +11,20 @@
 # Exit immediately if a command exits with a non-zero status
 set -eEo pipefail
 
-# -- Get prerequisite info
+# -- Pre-requisites 
 source "./install/pre/disk.sh"
 source "./install/pre/locale.sh"
-# TODO: 
+source "./install/pre/luks.sh"
+source "./install/pre/password.sh"
 source "./install/pre/timezone.sh"
 source "./install/pre/ucode.sh"
 
+source "./install/pre/create-config.sh"
+
+# -- Main
+
+
+# TODO: 
 # -- chroot
 
 
@@ -27,4 +34,6 @@ source "./install/pre/ucode.sh"
 # -- configure gui
 
 
-# -- final wrap-u
+# -- final wrap-up
+
+

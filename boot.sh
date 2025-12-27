@@ -14,13 +14,13 @@ set -eEo pipefail
 
 # Get host and user names from user
 while true; do    
-    read -p "\nEnter the desired hostname:\n" SYSNAME
+    read -p "\nEnter the desired hostname:\n" HOST_NAME
     read -p "\nEnter the desired username:\n" USERNAME
-    read -p "\nAre the following correct (y/n)? \nhostname: $SYSNAME \nusername: $USERNAME \n" yesno
+    read -p "\nAre the following correct (y/n)? \nhostname: $HOST_NAME \nusername: $USERNAME \n" yesno
     case $yesno in
         [Yy]* )
             echo -e "\nContinuing with the install"
-            export SYSNAME="$SYSNAME"
+            export HOST_NAME="$HOST_NAME"
             export USERNAME="$USERNAME"
             exit
         ;;

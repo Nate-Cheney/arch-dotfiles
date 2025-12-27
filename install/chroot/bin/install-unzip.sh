@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Author: Nate Cheney
+# Filename: install-unzip.sh
+# Description: This script installs unzip. 
+# Usage: sudo ./install-unzip.sh
+# Options:
+#
+
+package="unzip"
+
+if ! pacman -Q $package &> /dev/null; then
+    echo "Installing $package..."
+    sudo pacman -S --noconfirm --needed $package
+else 
+    echo "$package is already installed."
+fi
+

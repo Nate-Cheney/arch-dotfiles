@@ -2,7 +2,7 @@
 
 # Author: Nate Cheney
 # Filename: disk.sh
-# Description: This script partitions the disk. 
+# Description: This script partitions the disk and is to be ran by install/main/main.sh. 
 # Usage: ./disk.sh
 # Options:
 #

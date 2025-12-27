@@ -40,6 +40,7 @@ if [ -f "unattend.json" ]; then
         disk="$unattend_drive"
         echo "Found unattend_drive: $disk"
         get_disk_paths $disk
+        ROOT_PART_UUID=$(blkid -s UUID -o value $ROOT_PART)  # UUID for bootloader 
         return
     fi
 fi
