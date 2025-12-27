@@ -1,9 +1,31 @@
 #!/bin/bash
 
 # Author: Nate Cheney
-# Filename: ucode.sh 
+# Filename: timezone.sh 
 # Description: Prerequisite script that gets the timezone. 
-# Usage: ./ucode.sh
+# Usage: ./timezone.sh
 # Options:
 #
+
+# Check unattend.json
+if [ -f "unattend.json" ]; then
+    unattend_timezone=$(jq -r ".timezone" unattend.json)
+
+    if timedatectl list-timezones | grep -qx "$unattend_timezone"; then
+        echo "Unattend timezone: $unattend_timezone exists"
+        TIMEZONE=$unattend_timezone
+        return
+    fi
+fi
+
+# Get timezone with IP API
+api_timezone=$(curl https://ipapi.co/timezone)
+if timedatectl list-timezones | grep -qx "$api_timezone"; then
+    echo "IP API timezone: $api_timezone exists"
+    TIMEZONE=$api_timezone
+    return
+fi
+
+# Default
+TIMEZONE="America/New_York"
 

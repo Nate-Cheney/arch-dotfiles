@@ -7,5 +7,12 @@
 # Options:
 #
 
+# Check unattend.json
+if [ -f "unattend.json" ]; then
+    unattend_locale=$(jq -r ".locale" unattend.json)
+    LOCALE=$unattend_locale
+    return
+fi
 
+LOCALE="en_US.UTF-8"
 
