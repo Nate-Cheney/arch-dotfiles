@@ -41,3 +41,5 @@ rm -rf /mnt/root/chroot/
 echo "Unmounting /mnt..."
 umount -R /mnt
 
+echo -e "\nFinished installing! Type 'reboot' to reboot into the system"
+

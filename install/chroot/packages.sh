@@ -15,6 +15,7 @@ sudo pacman -Sy
 
 # Switch to non-root user for yay 
 su -p - $USERNAME
+sudo -v
 
 echo "Installing git"
 bash "/root/chroot/bin/install-git.sh"
