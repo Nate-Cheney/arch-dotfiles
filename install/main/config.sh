@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Author: Nate Cheney
-# Filename: chroot.sh 
+# Filename: config.sh 
 # Description: Creates `chroot_config.sh` to be sourced during the chroot process. 
 #
-# Usage: ./create-config.sh
+# Usage: ./config.sh
 # Options:
 #
 

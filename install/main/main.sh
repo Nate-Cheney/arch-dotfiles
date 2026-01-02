@@ -29,8 +29,9 @@ pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware iwd git sudo
 echo "Generating fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# -- Create chroot config
-source "./install/main/create-config.sh"
+# -- Create chroot config and tailscale auth
+source "./install/main/config.sh"
+source "./install/main/tailscale.sh"
 
 # -- Copy chroot scripts
 cp -r ./install/chroot/ /mnt/root/
@@ -40,6 +41,7 @@ arch-chroot /mnt /root/chroot/main.sh
 
 # -- Clean up sensitive data --
 rm -f /mnt/root/chroot_config.sh
+rm -f /mnt/root/tailscale_auth.sh
 rm -rf /mnt/root/chroot/
 
 # -- Unmount --
