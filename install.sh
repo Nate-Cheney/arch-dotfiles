@@ -19,9 +19,14 @@ pacman -Syu --noconfirm git
 echo -e "\nCloning https://github.com/Nate-Cheney/arch-dotfiles.git"
 rm -rf ./arch-dotfiles/
 git clone "https://github.com/Nate-Cheney/arch-dotfiles.git" > dev/null
-cd arch-dotfiles
+
+if [[ -f "unattend.json" ]]; then
+    # Copy unattend to newly cloned root 
+    cp unattend.json arch-dotfiles/
+fi
 
 echo -e "\nBeginning install..."
+cd arch-dotfiles
 
 # -- Pre-requisites 
 source "./install/pre/main.sh"

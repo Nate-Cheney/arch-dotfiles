@@ -6,7 +6,7 @@ Thank you Wai Hon for [this amazing guide](https://whhone.com/posts/arch-linux-f
 
 # Scripted Steps
 
-I've scripted a large portion of the install process. The steps in this section can be used to speed up the process.
+I've since refined and scripted the install process. The steps in this section can be used install. 
 
 ## Prerequisites
 
@@ -15,52 +15,20 @@ It is assumed that:
 - You have already downloaded the Arch Linux ISO. If not, see [https://archlinux.org/download/](https://archlinux.org/download/)
 - You've booted into the live environment
 - You've connected to the internet
-- You've installed git in the live environment
-- You've cloned this repository in the live environment
 
 ## Install
 
-#### 0. Edit variables
+Run the following command in arch-iso environment. You will be prompted a number of times for some info after running it.
 
-Modify the variables set in `install/config.sh` as desired. Make sure to change the hostname as the default one will fail (ends with '-').
-
-#### 1. Install the system 
-
-Run the following script and follow the prompts. 
-
-``` bash
-./install/main.sh
+```
+curl https://raw.githubusercontent.com/Nate-Cheney/arch-dotfiles/refs/heads/main/install.sh | sh
 ```
 
-Reboot the computer.
+## Unattended Install
 
-``` bash
-reboot
-```
+If you'd like to install Arch in an unattended fashion, refer to: [unattend.md](https://github.com/Nate-Cheney/arch-dotfiles/blob/main/docs/unattend.md)
 
-#### 2. Install packages and configure the GUI 
-
-Log in as the regular (non root) user.
-
-Navigate to the dotfiles repo.
-
-``` bash
-cd ~/Dev/arch-dotfiles
-```
-
-Run the post install configuration script.
-
-``` bash
-./install/post-config.sh
-```
-
-Reboot the computer.
-
-``` bash
-reboot
-```
-
-The computer should boot into the SDDM login window.
+> TODO: Edit existing install-tailscale.sh to check for an auth key in unattend.json.
 
 # Manual Steps
 

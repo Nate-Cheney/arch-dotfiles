@@ -7,7 +7,17 @@
 # Options:
 #
 
-# Get LUKS passphrase
+# Check unattend.json
+if [ -f "unattend.json" ]; then
+    unattend_luks=$(jq -r ".luks // empty" unattend.json)
+    if [[ -n "$unattend_luks" ]]; then
+        LUKS_PASS=$unattend_luks
+        export LUKS_PASS 
+        return
+    fi
+fi
+
+# Interactively get LUKS passphrase
 while true; do
     read -s -p "Enter LUKS passphrase: " LUKS_PASS
     if [ -z "$LUKS_PASS" ]; then
