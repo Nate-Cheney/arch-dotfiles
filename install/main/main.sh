@@ -3,8 +3,13 @@
 # Author: Nate Cheney
 # Filename: main.sh
 # Description: This is the main pre-chroot script that:
+#   - Updates the time.
 #   - Creates the boot and root partitions and encrypts the root.
-#   - 
+#   - Installs necessary packages.
+#   - Generates a Filesystem Table.
+#   - Preps chroot.
+#   - Executes chroot scripts.
+#   - Cleans up.
 # Usage: ./main.sh
 # Options:
 #
@@ -18,7 +23,7 @@ source "./install/main/disk.sh"
 
 # -- Install essential packages --
 echo "Installing packages with pacstrap..."
-pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware iwd git neovim sudo
+pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware iwd git sudo
 
 # -- Generate an fstab file --
 echo "Generating fstab..."

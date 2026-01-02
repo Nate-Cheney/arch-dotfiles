@@ -2,23 +2,30 @@
 
 # Author: Nate Cheney
 # Filename: install.sh 
-# Description: This is the main install script for my Arch Linux configuration.
+# Description: 
+#   This script clones the dotfiles repo,
+#   runs the pre-requisite scripts (gathers info from unattend.json or interactively),
+#   and runs the main install script.
+#   
 # Usage: ./install.sh
 # Options:
 #
 
-
 # Exit immediately if a command exits with a non-zero status
 set -eEo pipefail
 
-# -- Pre-requisites 
-source "./install/pre/disk.sh"
-source "./install/pre/locale.sh"
-source "./install/pre/luks.sh"
-source "./install/pre/password.sh"
-source "./install/pre/timezone.sh"
-source "./install/pre/ucode.sh"
+pacman -Syu --noconfirm git
 
-# -- Main
+echo -e "\nCloning https://github.com/Nate-Cheney/arch-dotfiles.git"
+rm -rf ./arch-dotfiles/
+git clone "https://github.com/Nate-Cheney/arch-dotfiles.git" > dev/null
+cd arch-dotfiles
+
+echo -e "\nBeginning install..."
+
+# -- Pre-requisites 
+source "./install/pre/main.sh"
+
+# -- Main process
 source "./install/main/main.sh"
 
