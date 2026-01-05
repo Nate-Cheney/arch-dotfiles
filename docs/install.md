@@ -20,7 +20,7 @@ It is assumed that:
 
 Run the following command in arch-iso environment. You will be prompted a number of times for some info after running it.
 
-```
+``` bash
 curl https://raw.githubusercontent.com/Nate-Cheney/arch-dotfiles/refs/heads/main/install.sh | sh
 ```
 
