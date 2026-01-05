@@ -17,4 +17,3 @@ else
 fi
 
 systemctl --user enable wireplumber pipewire pipewire-pulse
-systemctl --user start wireplumber pipewire pipewire-pulse

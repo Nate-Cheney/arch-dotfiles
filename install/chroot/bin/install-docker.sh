@@ -17,9 +17,8 @@ else
 fi
 
 if pacman -Q docker &> /dev/null; then
-    # Enable and start docker
+    # Enable docker 
     sudo systemctl enable docker
-    sudo systemctl start docker
 
     # Add user to docker group
     sudo groupadd docker

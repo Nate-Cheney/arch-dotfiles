@@ -38,6 +38,8 @@ for file in /root/chroot/bin/install-*.sh; do
         echo "Running: $file"
         if grep -q "yay -S" "$file"; then
             su - "$USERNAME" -c "bash $file"
+        elif [[ "$file" == *"install-docker.sh" ]] || [[ "$file" == *"install-zathura.sh" ]]; then
+            su - "$username" -c "bash $file"
         else
             bash "$file"
         fi
