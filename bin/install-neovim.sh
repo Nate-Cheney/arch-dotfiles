@@ -28,7 +28,7 @@ if [ ! -d "$PACKER_DIR" ]; then
 fi
 
 # 2. Install neovim dotfiles if they don't exist
-if [ ! -d "$hHOME/Dev/neovim-dotfiles" ]; then
+if [ ! -d "$HOME/Dev/neovim-dotfiles" ]; then
   echo "Cloning Neovim configuration..."
   git clone https://github.com/Nate-Cheney/neovim-dotfiles.git "$HOME/Dev/neovim-dotfiles"
   sleep 2

@@ -69,7 +69,7 @@ if [ $# -eq 0 ]; then
 fi
 
 # Directories to watch
-directories=("elephant" "hypr" "kitty" "nvim" "uwsm" "walker" "waybar" )
+directories=("elephant" "hypr" "kitty" "nvim" "tmux" "uwsm" "walker" "waybar")
 
 # Files to watch 
 files=("starship.toml")

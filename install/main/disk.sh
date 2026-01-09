@@ -2,38 +2,10 @@
 
 # Author: Nate Cheney
 # Filename: disk.sh
-# Description: This script partitions the disk. 
+# Description: This script partitions the disk and is to be ran by install/main/main.sh. 
 # Usage: ./disk.sh
 # Options:
 #
-
-set -e
-set -o pipefail
-
-source install/config.sh
-
-# Prompt to continue
-echo "=========================================="
-echo "WARNING: This will destroy all data on $DISK"
-echo "=========================================="
-read -p "Press Enter to continue or Ctrl-C to cancel... "
-
-# Get LUKS passphrase
-while true; do
-    read -s -p "Enter LUKS passphrase: " LUKS_PASS
-    echo
-    if [ -z "$LUKS_PASS" ]; then
-        echo "Passphrase cannot be empty. Try again."
-        continue
-    fi
-    read -s -p "Confirm LUKS passphrase: " LUKS_PASS_CONFIRM
-    echo
-    if [ "$LUKS_PASS" == "$LUKS_PASS_CONFIRM" ]; then
-        break
-    else
-        echo "Passphrases do not match. Please try again."
-    fi
-done
 
 # Partition disk
 echo "Partitioning $DISK..."
@@ -113,6 +85,15 @@ mount $BOOT_PART /mnt/boot || {
     cryptsetup close cryptroot
     exit 1
 }
+
+ROOT_PART_UUID=$(blkid -s UUID -o value "$ROOT_PART")
+if [ -z "$ROOT_PART_UUID" ]; then
+    echo "ERROR: Failed to get UUID for $ROOT_PART"
+    umount /mnt/boot
+    umount /mnt
+    cryptsetup close cryptroot
+    exit 1
+fi
 
 echo "Disk setup complete"
 lsblk $DISK

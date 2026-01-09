@@ -2,7 +2,17 @@ return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use { "wbthomason/packer.nvim" }
     
-	-- Theme
+    -- Requred for nvim plugins
+    use "nvim-lua/plenary.nvim"
+
+	-- Harpoon
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
+
+    -- Theme
 	use { "catppuccin/nvim", as = "catppuccin" }
     
 	-- Telescope

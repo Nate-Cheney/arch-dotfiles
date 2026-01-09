@@ -60,7 +60,7 @@
             "",
             ""
         ],
-        "on-click": "pwvucontrol",
+        "on-click": "kitty -e wiremix",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "tooltip": true,
         "tooltip-format": "{node_name}"
