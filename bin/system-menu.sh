@@ -13,7 +13,7 @@ case $action in
         uwsm-app -- kitty -e impala
     ;;
     "Power Menu")
-        uwsm-app -- $HOME/.config/waybar/power-menu.sh
+        uwsm-app -- power-menu.sh
     ;;
     "Sound Manager")
         uwsm-app -- kitty -e wiremix
