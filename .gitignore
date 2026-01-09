@@ -1,3 +1,5 @@
 # Compiled packer files
 config/nvim/plugin/packer_compiled.lua
 
+# Backups created by hyprmon
+config/hypr/hyprland.conf.bak.*

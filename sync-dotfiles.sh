@@ -53,6 +53,7 @@ upload() {
             --exclude='*.log' \
             --exclude='__pycache__/' \
             --exclude='.git/' \
+            --exclude='*.bak*' \
             "$HOME/.config/$dir/" "./config/$dir/"
     done
     
