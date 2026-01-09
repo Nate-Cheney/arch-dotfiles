@@ -21,3 +21,6 @@ if ! grep -q "alias devpod='devpod-cli'" "$HOME/.bashrc"; then
     echo "alias devpod='devpod-cli'" >> $HOME/.bashrc
 fi    
 
+echo "Configuring devpod to use docker..."
+devpod provider add docker
+devpod provider use docker
