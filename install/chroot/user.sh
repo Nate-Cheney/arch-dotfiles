@@ -27,10 +27,10 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 # Create Dev dir
 dev_dir="/home/$USERNAME/Dev"
-mkdir -p $dev_dir 
 chown $USERNAME:$USERNAME "$dev_dir"
 
 # Clone dotfiles repo
-git clone --depth 1 https://github.com/Nate-Cheney/arch-dotfiles.git "$dev_dir/arch-dotfiles"
-chown -R $USERNAME:$USERNAME "$dev_dir/arch-dotfiles"
+mkdir -p "/home/$USERNAME/.local/"
+git clone --depth 1 https://github.com/Nate-Cheney/arch-dotfiles.git "/home/$USERNAME/.local/arch-dotfiles"
+chown -R $USERNAME:$USERNAME"/home/$USERNAME/.local/arch-dotfiles"
 
