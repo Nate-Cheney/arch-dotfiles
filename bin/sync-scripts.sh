@@ -39,11 +39,6 @@ sync_scripts() {
     source="$1"
     dest="$2"
 
-    if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.bashrc"; then
-        echo "Adding '~/.local/bin/' to the bashrc path..."
-        echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
-    fi
-
     echo "Syncing from $source to $dest..."
 
     # Ensure destination exists
@@ -76,5 +71,4 @@ while getopts "hdu" opt; do
 		;;
 	esac
 done
-
 

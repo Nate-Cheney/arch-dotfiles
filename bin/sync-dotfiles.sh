@@ -37,22 +37,56 @@ EOF
 	exit 0
 }
 
+setup_gpu_config() {
+    config_file="$HOME/.config/uwsm/env-hyprland"
+
+    # Safe Globbing for cards
+    shopt -s nullglob
+    cards=(/dev/dri/card*)
+    shopt -u nullglob
+
+    if [ ${#cards[@]} -eq 0 ]; then
+        echo "Warning: No DRM devices found in /dev/dri/."
+        return
+    fi
+
+    device_string=$(IFS=: ; echo "${cards[*]}")
+    export_string="export AQ_DRM_DEVICES=\"$device_string\""
+
+    if grep -q "export AQ_DRM_DEVICES" $config_file 2>/dev/null; then
+        sed -i "s|^export AQ_DRM_DEVICES=\".*\"|$export_string|" $config_file 
+        echo "Updated GPU config in $config_file."
+    else 
+        echo $export_string >> $config_file
+        echo "Deleted GPU config in $config_file."
+    fi
+}
+
 sync_dotfiles() {
     source="$1"
     dest="$2"
 
+    RSYNC_ARGS=(
+        -av --delete 
+        --exclude "*.cache"
+        --exclude "*.log"
+        --exclude "__pycache__/"
+        --exclude ".git/"
+        --exclude "*env-hyprland"
+    )
+
     for dir in "${DIRECTORIES[@]}"; do
-        rsync -av --delete \
-            --exclude='*.cache' \
-            --exclude='*.log' \
-            --exclude='__pycache__/' \
-            --exclude='.git/' \
-            "$source/$dir/" "$dest/$dir/"
+        rsync "${RSYNC_ARGS[@]}" "$source/$dir/" "$dest/$dir/"
     done
 
     for file in "${FILES[@]}"; do
         rsync -av --delete "$source/$file" "$dest/$file"
     done
+
+    if [ "$dest" == "$HOME_CONFIG_DIR" ]; then     
+        # If downloading, update uwsm/env-hyprland
+        setup_gpu_config
+    fi
 }
 
 # Ensure an argument was passed
