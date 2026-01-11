@@ -53,12 +53,12 @@ setup_gpu_config() {
     device_string=$(IFS=: ; echo "${cards[*]}")
     export_string="export AQ_DRM_DEVICES=\"$device_string\""
 
-    if grep -q "export AQ_DRM_DEVICES" $config_file 2>/dev/null; then
+    if grep -q "^export AQ_DRM_DEVICES" $config_file 2>/dev/null; then
         sed -i "s|^export AQ_DRM_DEVICES=\".*\"|$export_string|" $config_file 
         echo "Updated GPU config in $config_file."
     else 
         echo $export_string >> $config_file
-        echo "Deleted GPU config in $config_file."
+        echo "Added GPU config to $config_file."
     fi
 }
 
@@ -68,6 +68,7 @@ sync_dotfiles() {
 
     RSYNC_ARGS=(
         -av --delete 
+        --exclude "*.bak*"
         --exclude "*.cache"
         --exclude "*.log"
         --exclude "__pycache__/"
@@ -85,6 +86,7 @@ sync_dotfiles() {
 
     if [ "$dest" == "$HOME_CONFIG_DIR" ]; then     
         # If downloading, update uwsm/env-hyprland
+        echo "Running setup_gpu_config..."
         setup_gpu_config
     fi
 }
