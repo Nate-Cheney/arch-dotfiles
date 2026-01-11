@@ -68,8 +68,8 @@ sync_dotfiles() {
 
     RSYNC_ARGS=(
         -av --delete 
-        --exclude "*.bak*"
         --exclude "*.cache"
+        --exclude "*hyprland.conf.bak.*"
         --exclude "*.log"
         --exclude "__pycache__/"
         --exclude ".git/"
