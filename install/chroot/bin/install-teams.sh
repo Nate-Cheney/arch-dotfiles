@@ -10,7 +10,7 @@
 cat << EOF > /usr/share/applications/teams.desktop 
 [Desktop Entry]
 Name=Microsoft Teams
-Exec=chromium --app=https://teams.cloud.microsoft/
+Exec=chromium --new-window https://teams.cloud.microsoft/
 Icon=/usr/share/icons/Papirus/48x48/apps/teams-for-linux.svg
 Type=Application
 Categories=Network;WebBrowser;
