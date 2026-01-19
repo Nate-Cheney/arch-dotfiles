@@ -23,7 +23,7 @@ source "./install/main/disk.sh"
 
 # -- Install essential packages --
 echo "Installing packages with pacstrap..."
-pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware iwd git sudo
+pacstrap /mnt $CPU_UCODE base dhcpcd linux linux-firmware iwd git sudo liquidctl
 
 # -- Generate an fstab file --
 echo "Generating fstab..."
