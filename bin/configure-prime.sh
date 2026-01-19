@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Author: Nate Cheney
-# Filename: enable-prime.sh 
+# Filename: configure-prime.sh 
 # Description: 
 #   This installs and configures the necessary packages for PRIME GPU offloading.
 #   
@@ -10,7 +10,7 @@
 #
 #   Note: in order to allow an app to use the GPU, it must be run with `prime-run ` as a prefix. 
 #
-# Usage: sudo ./enable-prime.sh
+# Usage: sudo ./configure-prime.sh
 # Options:
 #
 
