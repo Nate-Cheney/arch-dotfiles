@@ -10,5 +10,5 @@
 # Options:
 
 sudo liquidctl initialize all
-sudo liquidctl set pump speed 39 50 40 80
+sudo liquidctl set pump speed 80
 

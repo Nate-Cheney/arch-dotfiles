@@ -22,9 +22,14 @@ if [ -z "$DEVICE_LIST" ]; then
 fi
 
 # Load configuration
-source /root/chroot_config.sh
-
-su -p - $USERNAME
+if [ -f "/root/chroot_config.sh" ]; then
+    source /root/chroot_config.sh
+    su -p - $USERNAME
+else
+    echo -e "Not in CHROOT environment. \nUsing $USER to install packages and create the aio-control service..."
+    USERNAME=$USER
+    sudo -v
+fi
 
 package="liquidctl"
 
@@ -35,13 +40,18 @@ else
     echo "$package is already installed."
 fi
 
-
+echo "Creating aio-control.service..."
 cat <<EOF | sudo sudo tee "/etc/systemd/system/aio-control.service" > /dev/null
 [Unit]
 Description=AIO Water Cooler Config
 
 [Service]
 User=root
-ExecStart=/usr/$USERNAME/.local/bin/aio-control.sh
+ExecStart=/home/$USERNAME/.local/bin/aio-control.sh
+
+[Install]
+WantedBy=multi-user.target
 EOF
+
+echo "Done."
 
