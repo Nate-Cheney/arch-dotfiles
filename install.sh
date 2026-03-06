@@ -5,7 +5,7 @@
 # Description: 
 #   This script clones the dotfiles repo,
 #   runs the pre-requisite scripts (gathers info from unattend.json or interactively),
-#   and runs the main install script.
+#   and runs the main install scripts.
 #   
 # Usage: curl https://raw.githubusercontent.com/Nate-Cheney/arch-dotfiles/refs/heads/main/install.sh | sh 
 # Options:
