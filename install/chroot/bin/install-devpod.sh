@@ -22,4 +22,5 @@ if ! grep -q "alias devpod='devpod-cli'" "$HOME/.bashrc"; then
 fi    
 
 devpod provider add docker
+devpod ide use none
 
