@@ -93,6 +93,8 @@ if [ -z "$ROOT_PART_UUID" ]; then
     umount /mnt
     cryptsetup close cryptroot
     exit 1
+else
+    export ROOT_PART_UUID
 fi
 
 echo "Disk setup complete"

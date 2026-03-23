@@ -50,7 +50,7 @@ echo "Regenerating initramfs..."
 mkinitcpio -P
 
 # Enable kernal modesetting
-sed -i "/options cryptdevice=UUID=.*?:cryptroot root=\/dev\/mapper\/cryptroot rw/ { /nvidia_drm.modeset=1/ !s/rw/rw nvidia_drm.modeset=1 nvidia_drm.fbdev=1/ }" /boot/loader/entries/arch.conf
+sed -i -E "/options cryptdevice=UUID=[^:]+:cryptroot root=\/dev\/mapper\/cryptroot rw/ { /nvidia_drm.modeset=1/ !s/rw$/rw nvidia_drm.modeset=1 nvidia_drm.fbdev=1/ }" /boot/loader/entries/arch.conf
 
 # Configure hyprland
 echo 'export AQ_DRM_DEVICES="/dev/dri/card1"' > $HOME/.config/uwsm/env-hyprland

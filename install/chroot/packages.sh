@@ -13,8 +13,6 @@ source /root/chroot_config.sh
 echo "Updating pacman manifest"
 sudo pacman -Sy
 
-# Switch to non-root user for yay 
-su -p - $USERNAME
 sudo -v
 
 echo "Installing git"

@@ -34,16 +34,23 @@ fi
 
 # Check unattend.json
 if [ -f "unattend.json" ]; then
-    unattend_drive=$(jq -r ".drive" unattend.json)
+    unattend_drive=$(jq -r ".drive // empty" unattend.json)
     
-    if printf '%s\n' "${drive_list[@]}" | grep -qx "^$unattend_drive "; then
-        disk="$unattend_drive"
-        echo "Found unattend_drive: $disk"
-        get_disk_paths $disk
-        export DISK
-        export BOOT_PART
-        export ROOT_PART
-        return
+    if [[ -n "$unattend_drive" ]]; then
+        # Strip the /dev/ prefix if the user supplied a full path
+        unattend_drive="${unattend_drive#/dev/}"
+
+        if printf '%s\n' "${drive_list[@]}" | grep -qx "^$unattend_drive "; then
+            disk="$unattend_drive"
+            echo "Found unattend_drive: $disk"
+            get_disk_paths $disk
+            export DISK
+            export BOOT_PART
+            export ROOT_PART
+            return
+        else
+            echo "Unattedn drive '$unattend_drive' not found in available drives. Falling back to interactive selection."
+        fi
     fi
 fi
 

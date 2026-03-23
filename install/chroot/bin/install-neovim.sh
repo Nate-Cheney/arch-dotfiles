@@ -18,7 +18,7 @@ else
 fi
 
 # -- Configure Neovim after install
-su - "$USERNAME" -c << 'EOF'
+su - "$USERNAME" -c 'bash -s' << 'EOF'
 # 1. Install packer.nvim if it doesn't exist
 PACKER_DIR="$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 if [ ! -d "$PACKER_DIR" ]; then
@@ -51,5 +51,4 @@ nvim --headless --noplugin \
   -c 'PackerSync' 2>/dev/null || true
 
 sleep 3
-
 EOF

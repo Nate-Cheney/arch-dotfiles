@@ -282,7 +282,7 @@ Replace `/boot/loader/loader.conf` to:
 default      arch.conf
 timeout      5
 console-mode max
-editor       no
+editor       yes
 ```
 
 Review the configuration with `bootctl list`
