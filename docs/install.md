@@ -28,8 +28,6 @@ curl https://raw.githubusercontent.com/Nate-Cheney/arch-dotfiles/refs/heads/main
 
 If you'd like to install Arch in an unattended fashion, refer to: [unattend.md](https://github.com/Nate-Cheney/arch-dotfiles/blob/main/docs/unattend.md)
 
-> TODO: Edit existing install-tailscale.sh to check for an auth key in unattend.json.
-
 # Manual Steps
 
 The following steps can be used to install Arch Manually.

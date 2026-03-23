@@ -21,9 +21,16 @@ fi
 # Enable the tailscaled service
 sudo systemctl enable tailscaled
 
-# If ts has not been authenticated or the key is expired, 
-# it will wait here until someone manually follows the URL and authenticates 
-sudo tailscale up --accept-routes
+if [ -f "/mnt/root/tailscale_auth.sh" ]; then
+    TS_KEY=$(cat "/mnt/root/tailscale_auth.sh")
+
+    # If the auth key exists, then authenticate using it 
+    sudo tailscale up --accept-routes --auth-key="$TS_KEY"
+else
+    # If ts has not been authenticated or the key is expired, 
+    # it will wait here until someone manually follows the URL and authenticates 
+    sudo tailscale up --accept-routes
+fi
 
 # Clear ts network config if it exists
 tsNetFile="/etc/systemd/network/50-tailscale.network"
