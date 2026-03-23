@@ -29,7 +29,7 @@ This repository is a work in progress. The following to-do list is not all encom
 - [ ] Test on multiple systems
 
 *Configuration*
-- [ ] Move all custom scripts to `~/.local/bin` and update their references.
-- [ ] Find a better solution for display management. 
+- [x] Move all custom scripts to `~/.local/bin` and update their references. -> Done.
+- [x] Find a better solution for display management. -> Using hyprmon.
 - [ ] Find a better solution for wallpaper management.
 
