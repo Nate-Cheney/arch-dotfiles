@@ -44,7 +44,7 @@ if [ -z "$DEVICE_LIST" ]; then
 fi
 
 echo "Creating aio-control.service..."
-cat <<EOF | sudo sudo tee "/etc/systemd/system/aio-control.service" > /dev/null
+cat <<EOF | sudo tee "/etc/systemd/system/aio-control.service" > /dev/null
 [Unit]
 Description=AIO Water Cooler Config
 
