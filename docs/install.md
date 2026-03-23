@@ -287,7 +287,29 @@ editor       yes
 
 Review the configuration with `bootctl list`
 
-#### 16. Reboot
+#### 16. Creating a swap file
+
+[Reference](https://wiki.archlinux.org/title/Swap)
+
+Create the swapfile `mkswap -U clear --size <SIZE> --file /swapfile`.
+
+> Note: the size used should be the total amount of ram + 2GB. This allows the system a small tolerance when hybernating. 
+
+Then activate the swapfile `swapon /swapfile`.
+
+Now, create a 'swap unit' by creating the following file.
+
+``` /etc/systemd/system/swapfile.swap
+[Swap]
+What=/swapfile
+
+[Install]
+WantedBy=swap.target
+```
+
+Finally, enable the swap unit with systemd `systemctl enable swapfile.swap`.  
+
+#### 17. Reboot
 
 Exit the chroot environment by typing `exit` or `Ctrl+D`. Then run `reboot`.
 
