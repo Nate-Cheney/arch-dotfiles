@@ -22,7 +22,7 @@ SWAP_MB=$((MEM_MB + 2048))
 echo "Detected RAM: ${MEM_MB} MB"
 echo "Creating a swap file of exactly: ${SWAP_MB} MB..."
 
-mkswap -U clear --size "$SWAP_MB" --file "$SWAP_FILE"
+mkswap -U clear --size ${SWAP_MB}M --file $SWAP_FILE
 swapon $SWAP_FILE
 
 echo "Creating systemd service to activate the swap."
