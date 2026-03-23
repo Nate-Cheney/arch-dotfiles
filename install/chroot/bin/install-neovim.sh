@@ -18,6 +18,7 @@ else
 fi
 
 # -- Configure Neovim after install
+su - "$USERNAME" -c << 'EOF'
 # 1. Install packer.nvim if it doesn't exist
 PACKER_DIR="$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 if [ ! -d "$PACKER_DIR" ]; then
@@ -43,18 +44,12 @@ fi
 
 # 3. Install and compile plugins
 echo "Installing plugins..."
-
-# First pass: Insall plugins via Packer
 nvim --headless --noplugin \
   -c 'packadd packer.nvim' \
   -c 'luafile ~/.config/nvim/lua/plugins.lua' \
   -c 'autocmd User PackerComplete quitall' \
   -c 'PackerSync' 2>/dev/null || true
 
-# Second pass: Compile Treesitter parsers
-#echo "Compiling Treesitter parsers..."
-#nvim --headless \
-#  -c 'TSUpdateSync' \
-#  -c 'q'
-
 sleep 3
+
+EOF

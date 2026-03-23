@@ -7,8 +7,6 @@
 # Options:
 #
 
-sudo su -p - $USERNAME
-
 LOCAL_APPS="$HOME/.local/share/applications/"
 USR_APPS="/usr/share/applications/"
 

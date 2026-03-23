@@ -19,7 +19,7 @@ fi
 packages=(linux-firmware-nvidia nvidia-open nvidia-settings nvidia-utils)
 
 if ! pacman -Q "${packages[@]}" &> /dev/null; then
-    echo "Installing ${package[@]}..."
+    echo "Installing ${packages[@]}..."
     pacman -S --noconfirm --needed "${packages[@]}"
 else 
     echo "NVIDIA GPU packages already installed."

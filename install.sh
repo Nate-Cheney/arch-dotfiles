@@ -18,7 +18,7 @@ pacman -Syu --noconfirm git
 
 echo -e "\nCloning https://github.com/Nate-Cheney/arch-dotfiles.git"
 rm -rf ./arch-dotfiles/
-git clone "https://github.com/Nate-Cheney/arch-dotfiles.git" > dev/null
+git clone "https://github.com/Nate-Cheney/arch-dotfiles.git" > /dev/null
 
 if [[ -f "unattend.json" ]]; then
     # Copy unattend to newly cloned root 

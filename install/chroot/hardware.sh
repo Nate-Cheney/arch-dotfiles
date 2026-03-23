@@ -16,7 +16,7 @@ if lspci -nn | grep -q "10de:"; then
     bash "/root/chroot/bin/hardware/install-nvidia_gpu.sh"
 elif lspci -nn | grep -q "8086:56\|8086:e2"; then
     echo "Intel Arc (Alchemist/Battlemage) GPU detected. Installing drivers..." 
-    bash "/root/chroot/bin/hardware/install-nvidia_gpu.sh"
+    bash "/root/chroot/bin/hardware/install-intel_gpu.sh"
 fi
 
 # Instal AIO software
