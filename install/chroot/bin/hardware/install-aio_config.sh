@@ -10,16 +10,9 @@
 #   50% AIO pump speed below 40
 #   80% AIO pump speed above 40
 #
-# Usage: 
+# Usage: Ran by `install/chroot/hardware.sh` during the install process. 
 # Options:
 #
-
-# Ensure that there is an AIO Liquid Cooler installed
-DEVICE_LIST=$(liquidctl list)
-if [ -z "$DEVICE_LIST" ]; then
-    echo "No AIO detected (liquidctl list was empty)."
-    return
-fi
 
 # Load configuration
 if [ -f "/root/chroot_config.sh" ]; then
@@ -38,6 +31,16 @@ if ! pacman -Q $package &> /dev/null; then
     sudo pacman -S --noconfirm --needed $package
 else 
     echo "$package is already installed."
+fi
+
+# Ensure that there is an AIO Liquid Cooler installed
+DEVICE_LIST=$(liquidctl list)
+if [ -z "$DEVICE_LIST" ]; then
+    echo "No AIO detected."
+    echo "Removing $package..."
+    sudo pacman -Rns --noconfirm $package
+    echo "$package removed."
+    return
 fi
 
 echo "Creating aio-control.service..."

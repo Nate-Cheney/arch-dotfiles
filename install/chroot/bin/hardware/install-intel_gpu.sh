@@ -11,15 +11,15 @@
 
 # Ensure script is run as root
 if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root (sudo ./install-intel_gpu.sh)"
+    echo "Please run as root (sudo ./install-nvidia_gpu.sh)"
     exit 1
 fi
 
 packages=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver libva-intel-driver intel-gpu-tools)
     
 if ! pacman -Q "${packages[@]}" &> /dev/null; then
-    echo "Installing $package..."
-    pacman -S --noconfirm --needed "${packages[@]}"
+    echo "Installing ${packages[@]}..."
+    sudo pacman -S --noconfirm --needed "${packages[@]}"
 else 
     echo "Intel GPU packages already installed."
 fi

@@ -19,13 +19,11 @@ fi
 packages=(linux-firmware-nvidia nvidia-open nvidia-settings nvidia-utils)
 
 if ! pacman -Q "${packages[@]}" &> /dev/null; then
-    echo "Installing $package..."
+    echo "Installing ${package[@]}..."
     pacman -S --noconfirm --needed "${packages[@]}"
 else 
-    echo "Intel GPU packages already installed."
+    echo "NVIDIA GPU packages already installed."
 fi
-
-
 
 echo "Backing up mkinitcpio..."
 cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
