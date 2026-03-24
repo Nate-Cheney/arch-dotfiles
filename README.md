@@ -14,7 +14,7 @@ The config directory contains my system's dotfiles which can be synced using the
 
 ### Bin
 
-The bin directory is currently in limbo between containing all of my system's scripts and old install scripts. I need to clean this directory up and add the remaining scripts to `~/.local/bin`.
+The bin directory holds scripts my system uses which can be used using the `sync-scripts.sh` script. After the install process, they live in `~/.local/bin`.
 
 ### Install
 
@@ -25,7 +25,7 @@ The install directory contains the scripts for the entire install process. This 
 This repository is a work in progress. The following to-do list is not all encompassing.
 
 *Install process*
-- [ ] Improve the handling hardware differences
+- [x] Improve the handling hardware differences
 - [ ] Test on multiple systems
 
 *Configuration*
