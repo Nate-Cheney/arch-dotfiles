@@ -22,5 +22,6 @@ if ! grep -q "alias devpod='devpod-cli'" "$HOME/.bashrc"; then
 fi    
 
 devpod provider add docker
+devpod provider set-options docker -o INACTIVITY_TIMEOUT=2h
 devpod ide use none
 
