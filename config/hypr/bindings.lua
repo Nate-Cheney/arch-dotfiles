@@ -14,11 +14,11 @@ hl.bind(mainMod .. " + ESCAPE", function() hl.exec_cmd("uwsm-app -- system-menu.
 hl.bind(mainMod .. " + SHIFT + S", function() hl.exec_cmd("uwsm-app -- hyprshot -m region --clipboard-only") end)
 
 -- Window management dispatchers
-hl.bind(mainMod .. " + F", function() hl.dispatch("fullscreen") end)
-hl.bind(mainMod .. " + J", function() hl.dispatch("togglesplit") end)
-hl.bind(mainMod .. " + W", function() hl.dispatch("killactive") end)
-hl.bind(mainMod .. " + SHIFT + L", function() hl.dispatch("exit") end)
-hl.bind(mainMod .. " + SHIFT + V", function() hl.dispatch("togglefloating") end)
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + W", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exit())
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
 
 -- Laptop multimedia keys for volume and brightness
 hl.bind("XF86AudioRaiseVolume", function() hl.exec_cmd("uwsm-app -- wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+") end, { repeating = true, locked = true })
