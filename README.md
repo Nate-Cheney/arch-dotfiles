@@ -1,5 +1,7 @@
 Originally a simple repository to store my system's dotfiles.
 
+Now hosts the config, documentation, install scripts, and utilities for my system(s).
+
 ## Goals
 
 I want a lean, reproducible system, that just works.
@@ -27,7 +29,7 @@ This repository is a work in progress. The following to-do list is not all encom
 *Install process*
 
 *Configuration*
-- [ ] Dig up hyprpaper, hyprsunset, hyprlock, etc configs that were accidentally deleted
+- [x] Dig up hyprpaper, hyprsunset, hyprlock, etc configs that were accidentally deleted
 - [ ] Find a better monitor management solution.
 - [ ] Find a better solution for wallpaper management.
 
