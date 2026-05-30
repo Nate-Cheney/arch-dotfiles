@@ -18,4 +18,5 @@ source "./install/pre/name.sh"
 source "./install/pre/password.sh"
 source "./install/pre/timezone.sh"
 source "./install/pre/ucode.sh"
+source "./install/pre/tailscale.sh"
 
