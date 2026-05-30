@@ -1,0 +1,31 @@
+-- Input Configuration
+-- See https://wiki.hypr.land/Configuring/Variables/#input
+hl.config.input = {
+    kb_layout = "us",
+    
+    follow_mouse = 1,
+    sensitivity = 0,
+    
+    touchpad = {
+        -- natural_scroll = false,
+        
+        -- Use two-finger clicks for right-click instead of lower-right corner
+        -- clickfinger_behavior = true,
+        
+        -- scroll_factor = 0.4
+    }
+}
+
+-- Window Rules
+-- See https://wiki.hypr.land/Configuring/Window-Rules/
+-- Scroll nicely in the terminal
+hl.windowrulev2("scroll_touchpad 1.5", "class:^(Alacritty|kitty)$")
+
+-- Gestures
+-- Enable touchpad gestures for changing workspaces
+-- https://wiki.hypr.land/Configuring/Variables/#gestures
+-- hl.config.gestures = {
+--     workspace_swipe = true,
+--     workspace_swipe_fingers = 3
+-- }
+
