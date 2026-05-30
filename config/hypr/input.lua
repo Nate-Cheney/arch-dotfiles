@@ -16,11 +16,6 @@ hl.config.input = {
     }
 }
 
--- Window Rules
--- See https://wiki.hypr.land/Configuring/Window-Rules/
--- Scroll nicely in the terminal
-hl.windowrulev2("scroll_touchpad 1.5", "class:^(Alacritty|kitty)$")
-
 -- Gestures
 -- Enable touchpad gestures for changing workspaces
 -- https://wiki.hypr.land/Configuring/Variables/#gestures
