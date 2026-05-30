@@ -25,12 +25,9 @@ The install directory contains the scripts for the entire install process. This 
 This repository is a work in progress. The following to-do list is not all encompassing.
 
 *Install process*
-- [x] Improve the handling hardware differences
-- [ ] Test on multiple systems
 
 *Configuration*
-- [x] Unattended Tailscale auth. -> Done.
-- [x] Move all custom scripts to `~/.local/bin` and update their references. -> Done
-- [x] Find a better solution for display management. -> Using hyprmon.
+- [ ] Dig up hyprpaper, hyprsunset, hyprlock, etc configs that were accidentally deleted
+- [ ] Find a better monitor management solution.
 - [ ] Find a better solution for wallpaper management.
 
