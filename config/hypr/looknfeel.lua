@@ -79,7 +79,7 @@ hl.config.decoration = {
 hl.config.dwindle = {
     -- Floating-like tiled windows
     pseudotile = true,
-    preserve_split = true
+    preserve_split = true,
 
     -- Avoid overly wide single-window layouts on wide screens
     -- single_window_aspect_ratio = 1 1

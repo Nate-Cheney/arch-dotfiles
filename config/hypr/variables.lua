@@ -1,15 +1,15 @@
-# -- Applications --
-local browser = "zen-browser"
-local clipboardManager = "walker -m clipboard"
-local fileManager = "thunar"
-local passwordManager = "proton-pass"
-local runMenu = "walker"
-local terminal = "kitty"
+-- Applications --
+browser = "zen-browser"
+clipboardManager = "walker -m clipboard"
+fileManager = "thunar"
+passwordManager = "proton-pass"
+runMenu = "walker"
+terminal = "kitty"
 
-# -- Keybinds --
-local mainMod = "SUPER"
+-- Keybinds --
+mainMod = "SUPER"
 
-# -- Monitors --
-local monitor1 = ""
-local monitor2 = ""
+-- Monitors --
+monitor1 = ""
+monitor2 = ""
 

@@ -1,11 +1,11 @@
 -- Source variables first
-require("variables.lua")
+require("variables")
 
 -- Source individual config files
-require("autostart.lua")
-require("bindings.lua")
-require("input.lua")
-require("looknfeel.lua")
-require("monitors.lua")
-require("workspaces.lua")
+require("autostart")
+require("bindings")
+require("input")
+require("looknfeel")
+require("monitors")
+require("workspaces")
 
