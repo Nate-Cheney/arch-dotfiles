@@ -16,6 +16,8 @@ hl.config.input = {
     }
 }
 
+hl.windowrule("scroll_touchpad 1.5", "class:(Alacritty|kitty)")
+
 -- Gestures
 -- Enable touchpad gestures for changing workspaces
 -- https://wiki.hypr.land/Configuring/Variables/#gestures
