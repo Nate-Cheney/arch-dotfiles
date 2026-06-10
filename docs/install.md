@@ -128,6 +128,8 @@ Create the root partition
 
 - Enter `83` to set the type to Linux Filesystem.
 
+- Enter `w` to write the new table to disk and exit (save and quit).
+
 #### 4. Prepare the encrypted root partition
 
 [Reference](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LUKS_on_a_partition)
