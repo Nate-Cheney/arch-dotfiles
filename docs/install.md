@@ -173,7 +173,7 @@ Everything after linux-firmware is 'optional'. Replace `amd-ucode` with `intel-u
 
 
 ``` bash
-pacstrap /mnt amd-ucode base dhcpd linux linux-firmware \
+pacstrap /mnt amd-ucode base dhcpcd linux linux-firmware \
     git neovim 
 ```
 
