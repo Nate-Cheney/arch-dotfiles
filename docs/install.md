@@ -229,7 +229,7 @@ To set a hostname, write the desired system name to `/etc/hostname`.
 [Reference](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio)
 
 
-Edit /etc/mkinitcpio.conf, - add the encrypt hooks - move the keyboard hooks before encrypt ( so that you can type the passphrase )
+Edit `/etc/mkinitcpio.conf`, - add the encrypt hooks - move the keyboard hooks before encrypt ( so that you can type the passphrase )
 
 For example, after this step, `HOOKS` should look like:
 
