@@ -299,7 +299,7 @@ Create the swapfile `mkswap -U clear --size <SIZE> --file /swapfile`.
 
 Then activate the swapfile `swapon /swapfile`.
 
-Now, create a 'swap unit' by creating the following file.
+Now, create a 'swap unit' by creating the following file (`/etc/systemd/system/swapfile.swap`).
 
 ``` /etc/systemd/system/swapfile.swap
 [Swap]
