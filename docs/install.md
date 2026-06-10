@@ -124,6 +124,8 @@ Create the root partition
 
 - Use `t` to change the partition type.
 
+- Select the new root partition's number.
+
 - Enter `83` to set the type to Linux Filesystem.
 
 #### 4. Prepare the encrypted root partition
