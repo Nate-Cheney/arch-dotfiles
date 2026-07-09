@@ -19,7 +19,7 @@ yay -S --noconfirm --needed \
        "$package"
 
 
-package="greetd-regreet cage"
+package="greetd-regreet"
 if ! pacman -Q $package &> /dev/null; then
     echo "Installing $package..."
     sudo pacman -S --noconfirm --needed $package
@@ -36,7 +36,7 @@ vt = 1
 
 # Greeter
 [default_session]
-command = "cage -s -- regreet"
+command = "start-hyprland -- -c /etc/greetd/hyprland.conf"
 user = "greeter"
 
 # Autologin
@@ -68,7 +68,11 @@ timezone = "America/Detroit"
 label_width = 150
 EOF_REGREET
 
+# TODO: figure out a better monitor agnostic config
 cat <<EOF_HYPRCONF | sudo tee "/etc/greetd/hyprland.conf" > /dev/null
+monitor=HDMI-A-3,disable
+monitor=DP-2,preferred,auto,1
+
 exec-once = regreet; hyprctl dispatch exit
 misc {
     disable_hyprland_logo = true
