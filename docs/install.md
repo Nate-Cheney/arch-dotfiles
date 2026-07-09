@@ -124,7 +124,11 @@ Create the root partition
 
 - Use `t` to change the partition type.
 
+- Select the new root partition's number.
+
 - Enter `83` to set the type to Linux Filesystem.
+
+- Enter `w` to write the new table to disk and exit (save and quit).
 
 #### 4. Prepare the encrypted root partition
 
@@ -169,7 +173,7 @@ Everything after linux-firmware is 'optional'. Replace `amd-ucode` with `intel-u
 
 
 ``` bash
-pacstrap /mnt amd-ucode base dhcpd linux linux-firmware \
+pacstrap /mnt amd-ucode base dhcpcd linux linux-firmware \
     git neovim 
 ```
 
@@ -225,7 +229,7 @@ To set a hostname, write the desired system name to `/etc/hostname`.
 [Reference](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio)
 
 
-Edit /etc/mkinitcpio.conf, - add the encrypt hooks - move the keyboard hooks before encrypt ( so that you can type the passphrase )
+Edit `/etc/mkinitcpio.conf`, - add the encrypt hooks - move the keyboard hooks before encrypt ( so that you can type the passphrase )
 
 For example, after this step, `HOOKS` should look like:
 
@@ -295,7 +299,7 @@ Create the swapfile `mkswap -U clear --size <SIZE> --file /swapfile`.
 
 Then activate the swapfile `swapon /swapfile`.
 
-Now, create a 'swap unit' by creating the following file.
+Now, create a 'swap unit' by creating the following file (`/etc/systemd/system/swapfile.swap`).
 
 ``` /etc/systemd/system/swapfile.swap
 [Swap]
